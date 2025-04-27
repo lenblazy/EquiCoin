@@ -1,0 +1,576 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXContainerItemProxy section */
+		B8751E962DBDE47200BAB2CA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B8751E772DBDE47000BAB2CA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B8751E7E2DBDE47000BAB2CA;
+			remoteInfo = EquiCoin;
+		};
+		B8751EA02DBDE47200BAB2CA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B8751E772DBDE47000BAB2CA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B8751E7E2DBDE47000BAB2CA;
+			remoteInfo = EquiCoin;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		B8751E7F2DBDE47000BAB2CA /* EquiCoin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EquiCoin.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B8751E952DBDE47200BAB2CA /* EquiCoinTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EquiCoinTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B8751E9F2DBDE47200BAB2CA /* EquiCoinUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EquiCoinUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		B8751EA72DBDE47200BAB2CA /* Exceptions for "EquiCoin" folder in "EquiCoin" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = B8751E7E2DBDE47000BAB2CA /* EquiCoin */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		B8751E812DBDE47000BAB2CA /* EquiCoin */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				B8751EA72DBDE47200BAB2CA /* Exceptions for "EquiCoin" folder in "EquiCoin" target */,
+			);
+			path = EquiCoin;
+			sourceTree = "<group>";
+		};
+		B8751E982DBDE47200BAB2CA /* EquiCoinTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = EquiCoinTests;
+			sourceTree = "<group>";
+		};
+		B8751EA22DBDE47200BAB2CA /* EquiCoinUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = EquiCoinUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B8751E7C2DBDE47000BAB2CA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B8751E922DBDE47200BAB2CA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B8751E9C2DBDE47200BAB2CA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B8751E762DBDE47000BAB2CA = {
+			isa = PBXGroup;
+			children = (
+				B8751E812DBDE47000BAB2CA /* EquiCoin */,
+				B8751E982DBDE47200BAB2CA /* EquiCoinTests */,
+				B8751EA22DBDE47200BAB2CA /* EquiCoinUITests */,
+				B8751E802DBDE47000BAB2CA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B8751E802DBDE47000BAB2CA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B8751E7F2DBDE47000BAB2CA /* EquiCoin.app */,
+				B8751E952DBDE47200BAB2CA /* EquiCoinTests.xctest */,
+				B8751E9F2DBDE47200BAB2CA /* EquiCoinUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B8751E7E2DBDE47000BAB2CA /* EquiCoin */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B8751EA82DBDE47200BAB2CA /* Build configuration list for PBXNativeTarget "EquiCoin" */;
+			buildPhases = (
+				B8751E7B2DBDE47000BAB2CA /* Sources */,
+				B8751E7C2DBDE47000BAB2CA /* Frameworks */,
+				B8751E7D2DBDE47000BAB2CA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				B8751E812DBDE47000BAB2CA /* EquiCoin */,
+			);
+			name = EquiCoin;
+			packageProductDependencies = (
+			);
+			productName = EquiCoin;
+			productReference = B8751E7F2DBDE47000BAB2CA /* EquiCoin.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B8751E942DBDE47200BAB2CA /* EquiCoinTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B8751EAD2DBDE47200BAB2CA /* Build configuration list for PBXNativeTarget "EquiCoinTests" */;
+			buildPhases = (
+				B8751E912DBDE47200BAB2CA /* Sources */,
+				B8751E922DBDE47200BAB2CA /* Frameworks */,
+				B8751E932DBDE47200BAB2CA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B8751E972DBDE47200BAB2CA /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				B8751E982DBDE47200BAB2CA /* EquiCoinTests */,
+			);
+			name = EquiCoinTests;
+			packageProductDependencies = (
+			);
+			productName = EquiCoinTests;
+			productReference = B8751E952DBDE47200BAB2CA /* EquiCoinTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		B8751E9E2DBDE47200BAB2CA /* EquiCoinUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B8751EB02DBDE47200BAB2CA /* Build configuration list for PBXNativeTarget "EquiCoinUITests" */;
+			buildPhases = (
+				B8751E9B2DBDE47200BAB2CA /* Sources */,
+				B8751E9C2DBDE47200BAB2CA /* Frameworks */,
+				B8751E9D2DBDE47200BAB2CA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B8751EA12DBDE47200BAB2CA /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				B8751EA22DBDE47200BAB2CA /* EquiCoinUITests */,
+			);
+			name = EquiCoinUITests;
+			packageProductDependencies = (
+			);
+			productName = EquiCoinUITests;
+			productReference = B8751E9F2DBDE47200BAB2CA /* EquiCoinUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B8751E772DBDE47000BAB2CA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1630;
+				LastUpgradeCheck = 1630;
+				TargetAttributes = {
+					B8751E7E2DBDE47000BAB2CA = {
+						CreatedOnToolsVersion = 16.3;
+					};
+					B8751E942DBDE47200BAB2CA = {
+						CreatedOnToolsVersion = 16.3;
+						TestTargetID = B8751E7E2DBDE47000BAB2CA;
+					};
+					B8751E9E2DBDE47200BAB2CA = {
+						CreatedOnToolsVersion = 16.3;
+						TestTargetID = B8751E7E2DBDE47000BAB2CA;
+					};
+				};
+			};
+			buildConfigurationList = B8751E7A2DBDE47000BAB2CA /* Build configuration list for PBXProject "EquiCoin" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B8751E762DBDE47000BAB2CA;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = B8751E802DBDE47000BAB2CA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B8751E7E2DBDE47000BAB2CA /* EquiCoin */,
+				B8751E942DBDE47200BAB2CA /* EquiCoinTests */,
+				B8751E9E2DBDE47200BAB2CA /* EquiCoinUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B8751E7D2DBDE47000BAB2CA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B8751E932DBDE47200BAB2CA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B8751E9D2DBDE47200BAB2CA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B8751E7B2DBDE47000BAB2CA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B8751E912DBDE47200BAB2CA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B8751E9B2DBDE47200BAB2CA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B8751E972DBDE47200BAB2CA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B8751E7E2DBDE47000BAB2CA /* EquiCoin */;
+			targetProxy = B8751E962DBDE47200BAB2CA /* PBXContainerItemProxy */;
+		};
+		B8751EA12DBDE47200BAB2CA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B8751E7E2DBDE47000BAB2CA /* EquiCoin */;
+			targetProxy = B8751EA02DBDE47200BAB2CA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		B8751EA92DBDE47200BAB2CA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7SX6NBSFY3;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = EquiCoin/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.lenibonje.EquiCoin;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B8751EAA2DBDE47200BAB2CA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7SX6NBSFY3;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = EquiCoin/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.lenibonje.EquiCoin;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		B8751EAB2DBDE47200BAB2CA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 7SX6NBSFY3;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B8751EAC2DBDE47200BAB2CA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 7SX6NBSFY3;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B8751EAE2DBDE47200BAB2CA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7SX6NBSFY3;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.lenibonje.EquiCoinTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EquiCoin.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/EquiCoin";
+			};
+			name = Debug;
+		};
+		B8751EAF2DBDE47200BAB2CA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7SX6NBSFY3;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.lenibonje.EquiCoinTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EquiCoin.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/EquiCoin";
+			};
+			name = Release;
+		};
+		B8751EB12DBDE47200BAB2CA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7SX6NBSFY3;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.lenibonje.EquiCoinUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = EquiCoin;
+			};
+			name = Debug;
+		};
+		B8751EB22DBDE47200BAB2CA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7SX6NBSFY3;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.lenibonje.EquiCoinUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = EquiCoin;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B8751E7A2DBDE47000BAB2CA /* Build configuration list for PBXProject "EquiCoin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B8751EAB2DBDE47200BAB2CA /* Debug */,
+				B8751EAC2DBDE47200BAB2CA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B8751EA82DBDE47200BAB2CA /* Build configuration list for PBXNativeTarget "EquiCoin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B8751EA92DBDE47200BAB2CA /* Debug */,
+				B8751EAA2DBDE47200BAB2CA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B8751EAD2DBDE47200BAB2CA /* Build configuration list for PBXNativeTarget "EquiCoinTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B8751EAE2DBDE47200BAB2CA /* Debug */,
+				B8751EAF2DBDE47200BAB2CA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B8751EB02DBDE47200BAB2CA /* Build configuration list for PBXNativeTarget "EquiCoinUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B8751EB12DBDE47200BAB2CA /* Debug */,
+				B8751EB22DBDE47200BAB2CA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B8751E772DBDE47000BAB2CA /* Project object */;
+}
