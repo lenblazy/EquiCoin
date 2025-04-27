@@ -17,11 +17,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window                      = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene         = windowScene
             
-        let vc                      = CoinListVC()
+        let vc                      = ECTabBarController()
         let navController           = UINavigationController(rootViewController: vc)
         
         window?.rootViewController  = navController
         window?.makeKeyAndVisible()
+        UINavigationBar.appearance().tintColor = .systemGreen
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

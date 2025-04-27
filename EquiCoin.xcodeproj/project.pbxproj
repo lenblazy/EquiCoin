@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXContainerItemProxy section */
-		B8751E962DBDE47200BAB2CA /* PBXContainerItemProxy */ = {
+		B83573552DBE5F0E006DB0D4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B8751E772DBDE47000BAB2CA /* Project object */;
 			proxyType = 1;
@@ -16,9 +16,22 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		B835734C2DBE5E49006DB0D4 /* Embed PlugIns */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed PlugIns";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		B83573512DBE5F0E006DB0D4 /* EquiCoinTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EquiCoinTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8751E7F2DBDE47000BAB2CA /* EquiCoin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EquiCoin.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		B8751E952DBDE47200BAB2CA /* EquiCoinTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EquiCoinTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -32,6 +45,11 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		B83573522DBE5F0E006DB0D4 /* EquiCoinTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = EquiCoinTests;
+			sourceTree = "<group>";
+		};
 		B8751E812DBDE47000BAB2CA /* EquiCoin */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
@@ -40,22 +58,17 @@
 			path = EquiCoin;
 			sourceTree = "<group>";
 		};
-		B8751E982DBDE47200BAB2CA /* EquiCoinTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = EquiCoinTests;
-			sourceTree = "<group>";
-		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		B8751E7C2DBDE47000BAB2CA /* Frameworks */ = {
+		B835734E2DBE5F0E006DB0D4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B8751E922DBDE47200BAB2CA /* Frameworks */ = {
+		B8751E7C2DBDE47000BAB2CA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -65,11 +78,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B83573482DBE5E49006DB0D4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B8751E762DBDE47000BAB2CA = {
 			isa = PBXGroup;
 			children = (
 				B8751E812DBDE47000BAB2CA /* EquiCoin */,
-				B8751E982DBDE47200BAB2CA /* EquiCoinTests */,
+				B83573522DBE5F0E006DB0D4 /* EquiCoinTests */,
+				B83573482DBE5E49006DB0D4 /* Frameworks */,
 				B8751E802DBDE47000BAB2CA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -78,7 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				B8751E7F2DBDE47000BAB2CA /* EquiCoin.app */,
-				B8751E952DBDE47200BAB2CA /* EquiCoinTests.xctest */,
+				B83573512DBE5F0E006DB0D4 /* EquiCoinTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -86,6 +107,29 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		B83573502DBE5F0E006DB0D4 /* EquiCoinTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B83573572DBE5F0E006DB0D4 /* Build configuration list for PBXNativeTarget "EquiCoinTests" */;
+			buildPhases = (
+				B835734D2DBE5F0E006DB0D4 /* Sources */,
+				B835734E2DBE5F0E006DB0D4 /* Frameworks */,
+				B835734F2DBE5F0E006DB0D4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B83573562DBE5F0E006DB0D4 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				B83573522DBE5F0E006DB0D4 /* EquiCoinTests */,
+			);
+			name = EquiCoinTests;
+			packageProductDependencies = (
+			);
+			productName = EquiCoinTests;
+			productReference = B83573512DBE5F0E006DB0D4 /* EquiCoinTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		B8751E7E2DBDE47000BAB2CA /* EquiCoin */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B8751EA82DBDE47200BAB2CA /* Build configuration list for PBXNativeTarget "EquiCoin" */;
@@ -93,6 +137,7 @@
 				B8751E7B2DBDE47000BAB2CA /* Sources */,
 				B8751E7C2DBDE47000BAB2CA /* Frameworks */,
 				B8751E7D2DBDE47000BAB2CA /* Resources */,
+				B835734C2DBE5E49006DB0D4 /* Embed PlugIns */,
 			);
 			buildRules = (
 			);
@@ -108,29 +153,6 @@
 			productReference = B8751E7F2DBDE47000BAB2CA /* EquiCoin.app */;
 			productType = "com.apple.product-type.application";
 		};
-		B8751E942DBDE47200BAB2CA /* EquiCoinTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B8751EAD2DBDE47200BAB2CA /* Build configuration list for PBXNativeTarget "EquiCoinTests" */;
-			buildPhases = (
-				B8751E912DBDE47200BAB2CA /* Sources */,
-				B8751E922DBDE47200BAB2CA /* Frameworks */,
-				B8751E932DBDE47200BAB2CA /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B8751E972DBDE47200BAB2CA /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				B8751E982DBDE47200BAB2CA /* EquiCoinTests */,
-			);
-			name = EquiCoinTests;
-			packageProductDependencies = (
-			);
-			productName = EquiCoinTests;
-			productReference = B8751E952DBDE47200BAB2CA /* EquiCoinTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -141,13 +163,12 @@
 				LastSwiftUpdateCheck = 1630;
 				LastUpgradeCheck = 1630;
 				TargetAttributes = {
+					B83573502DBE5F0E006DB0D4 = {
+						CreatedOnToolsVersion = 16.3;
+						TestTargetID = B8751E7E2DBDE47000BAB2CA;
+					};
 					B8751E7E2DBDE47000BAB2CA = {
 						CreatedOnToolsVersion = 16.3;
-					};
-					B8751E942DBDE47200BAB2CA = {
-						CreatedOnToolsVersion = 16.3;
-						LastSwiftMigration = 1630;
-						TestTargetID = B8751E7E2DBDE47000BAB2CA;
 					};
 				};
 			};
@@ -159,27 +180,26 @@
 				Base,
 			);
 			mainGroup = B8751E762DBDE47000BAB2CA;
-			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
 			productRefGroup = B8751E802DBDE47000BAB2CA /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				B8751E7E2DBDE47000BAB2CA /* EquiCoin */,
-				B8751E942DBDE47200BAB2CA /* EquiCoinTests */,
+				B83573502DBE5F0E006DB0D4 /* EquiCoinTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		B8751E7D2DBDE47000BAB2CA /* Resources */ = {
+		B835734F2DBE5F0E006DB0D4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B8751E932DBDE47200BAB2CA /* Resources */ = {
+		B8751E7D2DBDE47000BAB2CA /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -189,14 +209,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		B8751E7B2DBDE47000BAB2CA /* Sources */ = {
+		B835734D2DBE5F0E006DB0D4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B8751E912DBDE47200BAB2CA /* Sources */ = {
+		B8751E7B2DBDE47000BAB2CA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -206,14 +226,50 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		B8751E972DBDE47200BAB2CA /* PBXTargetDependency */ = {
+		B83573562DBE5F0E006DB0D4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = B8751E7E2DBDE47000BAB2CA /* EquiCoin */;
-			targetProxy = B8751E962DBDE47200BAB2CA /* PBXContainerItemProxy */;
+			targetProxy = B83573552DBE5F0E006DB0D4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		B83573582DBE5F0E006DB0D4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7SX6NBSFY3;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.lenibonje.EquiCoinTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EquiCoin.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/EquiCoin";
+			};
+			name = Debug;
+		};
+		B83573592DBE5F0E006DB0D4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7SX6NBSFY3;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.lenibonje.EquiCoinTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EquiCoin.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/EquiCoin";
+			};
+			name = Release;
+		};
 		B8751EA92DBDE47200BAB2CA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -221,6 +277,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 7SX6NBSFY3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = EquiCoin/Info.plist;
@@ -249,6 +306,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 7SX6NBSFY3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = EquiCoin/Info.plist;
@@ -391,52 +449,18 @@
 			};
 			name = Release;
 		};
-		B8751EAE2DBDE47200BAB2CA /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7SX6NBSFY3;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = io.lenibonje.EquiCoinTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_OBJC_BRIDGING_HEADER = "EquiCoinTests/Screens/EquiCoinTests-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EquiCoin.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/EquiCoin";
-			};
-			name = Debug;
-		};
-		B8751EAF2DBDE47200BAB2CA /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7SX6NBSFY3;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = io.lenibonje.EquiCoinTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_OBJC_BRIDGING_HEADER = "EquiCoinTests/Screens/EquiCoinTests-Bridging-Header.h";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EquiCoin.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/EquiCoin";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		B83573572DBE5F0E006DB0D4 /* Build configuration list for PBXNativeTarget "EquiCoinTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B83573582DBE5F0E006DB0D4 /* Debug */,
+				B83573592DBE5F0E006DB0D4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		B8751E7A2DBDE47000BAB2CA /* Build configuration list for PBXProject "EquiCoin" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -451,15 +475,6 @@
 			buildConfigurations = (
 				B8751EA92DBDE47200BAB2CA /* Debug */,
 				B8751EAA2DBDE47200BAB2CA /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B8751EAD2DBDE47200BAB2CA /* Build configuration list for PBXNativeTarget "EquiCoinTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B8751EAE2DBDE47200BAB2CA /* Debug */,
-				B8751EAF2DBDE47200BAB2CA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
