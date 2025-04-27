@@ -14,19 +14,11 @@
 			remoteGlobalIDString = B8751E7E2DBDE47000BAB2CA;
 			remoteInfo = EquiCoin;
 		};
-		B8751EA02DBDE47200BAB2CA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B8751E772DBDE47000BAB2CA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B8751E7E2DBDE47000BAB2CA;
-			remoteInfo = EquiCoin;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		B8751E7F2DBDE47000BAB2CA /* EquiCoin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EquiCoin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8751E952DBDE47200BAB2CA /* EquiCoinTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EquiCoinTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B8751E9F2DBDE47200BAB2CA /* EquiCoinUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EquiCoinUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -53,11 +45,6 @@
 			path = EquiCoinTests;
 			sourceTree = "<group>";
 		};
-		B8751EA22DBDE47200BAB2CA /* EquiCoinUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = EquiCoinUITests;
-			sourceTree = "<group>";
-		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,13 +62,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B8751E9C2DBDE47200BAB2CA /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -90,7 +70,6 @@
 			children = (
 				B8751E812DBDE47000BAB2CA /* EquiCoin */,
 				B8751E982DBDE47200BAB2CA /* EquiCoinTests */,
-				B8751EA22DBDE47200BAB2CA /* EquiCoinUITests */,
 				B8751E802DBDE47000BAB2CA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -100,7 +79,6 @@
 			children = (
 				B8751E7F2DBDE47000BAB2CA /* EquiCoin.app */,
 				B8751E952DBDE47200BAB2CA /* EquiCoinTests.xctest */,
-				B8751E9F2DBDE47200BAB2CA /* EquiCoinUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -153,29 +131,6 @@
 			productReference = B8751E952DBDE47200BAB2CA /* EquiCoinTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		B8751E9E2DBDE47200BAB2CA /* EquiCoinUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B8751EB02DBDE47200BAB2CA /* Build configuration list for PBXNativeTarget "EquiCoinUITests" */;
-			buildPhases = (
-				B8751E9B2DBDE47200BAB2CA /* Sources */,
-				B8751E9C2DBDE47200BAB2CA /* Frameworks */,
-				B8751E9D2DBDE47200BAB2CA /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B8751EA12DBDE47200BAB2CA /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				B8751EA22DBDE47200BAB2CA /* EquiCoinUITests */,
-			);
-			name = EquiCoinUITests;
-			packageProductDependencies = (
-			);
-			productName = EquiCoinUITests;
-			productReference = B8751E9F2DBDE47200BAB2CA /* EquiCoinUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -191,10 +146,7 @@
 					};
 					B8751E942DBDE47200BAB2CA = {
 						CreatedOnToolsVersion = 16.3;
-						TestTargetID = B8751E7E2DBDE47000BAB2CA;
-					};
-					B8751E9E2DBDE47200BAB2CA = {
-						CreatedOnToolsVersion = 16.3;
+						LastSwiftMigration = 1630;
 						TestTargetID = B8751E7E2DBDE47000BAB2CA;
 					};
 				};
@@ -215,7 +167,6 @@
 			targets = (
 				B8751E7E2DBDE47000BAB2CA /* EquiCoin */,
 				B8751E942DBDE47200BAB2CA /* EquiCoinTests */,
-				B8751E9E2DBDE47200BAB2CA /* EquiCoinUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -229,13 +180,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		B8751E932DBDE47200BAB2CA /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B8751E9D2DBDE47200BAB2CA /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -259,13 +203,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B8751E9B2DBDE47200BAB2CA /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -273,11 +210,6 @@
 			isa = PBXTargetDependency;
 			target = B8751E7E2DBDE47000BAB2CA /* EquiCoin */;
 			targetProxy = B8751E962DBDE47200BAB2CA /* PBXContainerItemProxy */;
-		};
-		B8751EA12DBDE47200BAB2CA /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B8751E7E2DBDE47000BAB2CA /* EquiCoin */;
-			targetProxy = B8751EA02DBDE47200BAB2CA /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -292,11 +224,11 @@
 				DEVELOPMENT_TEAM = 7SX6NBSFY3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = EquiCoin/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = EquiCoin;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -320,11 +252,11 @@
 				DEVELOPMENT_TEAM = 7SX6NBSFY3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = EquiCoin/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = EquiCoin;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -463,6 +395,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7SX6NBSFY3;
@@ -472,6 +405,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = io.lenibonje.EquiCoinTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "EquiCoinTests/Screens/EquiCoinTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EquiCoin.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/EquiCoin";
@@ -482,6 +417,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7SX6NBSFY3;
@@ -491,43 +427,10 @@
 				PRODUCT_BUNDLE_IDENTIFIER = io.lenibonje.EquiCoinTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "EquiCoinTests/Screens/EquiCoinTests-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EquiCoin.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/EquiCoin";
-			};
-			name = Release;
-		};
-		B8751EB12DBDE47200BAB2CA /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7SX6NBSFY3;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = io.lenibonje.EquiCoinUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = EquiCoin;
-			};
-			name = Debug;
-		};
-		B8751EB22DBDE47200BAB2CA /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7SX6NBSFY3;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = io.lenibonje.EquiCoinUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = EquiCoin;
 			};
 			name = Release;
 		};
@@ -557,15 +460,6 @@
 			buildConfigurations = (
 				B8751EAE2DBDE47200BAB2CA /* Debug */,
 				B8751EAF2DBDE47200BAB2CA /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B8751EB02DBDE47200BAB2CA /* Build configuration list for PBXNativeTarget "EquiCoinUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B8751EB12DBDE47200BAB2CA /* Debug */,
-				B8751EB22DBDE47200BAB2CA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

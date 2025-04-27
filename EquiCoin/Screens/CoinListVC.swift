@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  CoinListVC.swift
 //  EquiCoin
 //
 //  Created by Lennox Mwabonje on 27/04/2025.
@@ -7,13 +7,13 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class CoinListVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        self.view.backgroundColor = .systemMint
     }
+    
 
 
 }
-
