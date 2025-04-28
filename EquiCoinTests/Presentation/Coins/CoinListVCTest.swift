@@ -16,6 +16,17 @@ final class CoinListVCTest: XCTestCase {
     }
     
     
+    func test_viewDidLoad_pageHasBlackBackground() {
+        XCTAssertEqual(makeSUT().view.backgroundColor, AppColors.dark)
+    }
+    
+    
+    func test_viewDidLoad_rendersListOfCoins() {
+        let sut = makeSUT()
+        
+    }
+    
+    
     // MARK: - Helpers
     private func makeSUT() -> CoinsVC {
         let sut = CoinsVC()

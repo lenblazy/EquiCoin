@@ -9,5 +9,6 @@ import Foundation
 
 protocol CoinsRepository {
     
+    func fetchCoins() async -> Result<[Coin], AppError>
     
 }
