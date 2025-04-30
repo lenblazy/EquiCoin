@@ -15,7 +15,7 @@ class CoinCell: UICollectionViewCell {
     let priceLabel      = AppBodyLabel()
     let minCapLabel     = AppBodyLabel()
     let maxCapLabel     = AppBodyLabel()
-    let coinImageView   = AppImageView()
+    let coinImageView   = AppCacheImageView()
     var stackMain       = UIStackView()
     var stackPerform    = UIStackView()
     
@@ -69,11 +69,11 @@ class CoinCell: UICollectionViewCell {
     
     
     func set(coin: Coin) {
-//        coinImageView.text = coin.name
-        coinLabel.text = coin.name
-        priceLabel.text = coin.price
-        maxCapLabel.text = coin.price
-        minCapLabel.text = coin.price
+        coinImageView.loadImage(from: coin.iconUrl)
+        coinLabel.text      = coin.name
+        priceLabel.text     = coin.price
+        maxCapLabel.text    = coin.price
+        minCapLabel.text    = coin.price
     }
     
 }
