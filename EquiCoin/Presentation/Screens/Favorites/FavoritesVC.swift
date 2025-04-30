@@ -13,10 +13,11 @@ class FavoritesVC: UIViewController {
         super.viewDidLoad()
         configureUI()
     }
+    
 
     private func configureUI() {
-        self.view.backgroundColor = .systemBackground
-        self.title = "Favorites"
-        self.navigationController?.navigationBar.prefersLargeTitles = true
+        view.backgroundColor = AppColors.dark
+        title = "Favorites"
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
 }

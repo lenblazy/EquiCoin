@@ -28,7 +28,7 @@ class AppBodyLabel: UILabel {
     
     
     private func configure() {
-        textColor                   = AppColors.grayDark
+        textColor                   = AppColors.light
         adjustsFontSizeToFitWidth   = true
         minimumScaleFactor          = 0.9
         lineBreakMode               = .byTruncatingTail

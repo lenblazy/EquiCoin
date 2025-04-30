@@ -8,5 +8,10 @@
 import Foundation
 
 struct CoinVM {
+    let name: String
+    let price: String
+    let image: String
+    
+    
     
 }

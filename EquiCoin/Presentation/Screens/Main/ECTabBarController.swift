@@ -22,7 +22,34 @@ class ECTabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        UITabBar.appearance().tintColor = .systemGreen
+        UINavigationBar.appearance().tintColor = AppColors.brand
+        tabBar.barTintColor = AppColors.dark
+        tabBar.unselectedItemTintColor = AppColors.grayDark
+        if #available(iOS 15.0, *) {
+            let appearance = UINavigationBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            appearance.backgroundColor = AppColors.dark
+            appearance.titleTextAttributes = [
+                .foregroundColor: AppColors.light,
+                .font: UIFont.boldSystemFont(ofSize: 16)
+            ]
+            appearance.largeTitleTextAttributes = [
+                .foregroundColor: AppColors.light,
+                .font: UIFont.boldSystemFont(ofSize: 34)
+            ]
+
+            UINavigationBar.appearance().standardAppearance = appearance
+            UINavigationBar.appearance().scrollEdgeAppearance = appearance
+            UINavigationBar.appearance().compactAppearance = appearance
+            
+        } else {
+            UINavigationBar.appearance().barTintColor = .white
+            UINavigationBar.appearance().titleTextAttributes = [
+                .foregroundColor: AppColors.light,
+                .font: UIFont.boldSystemFont(ofSize: 16)
+            ]
+        }
+        
         viewControllers = [createCoinsNC(repository: repository), createFavoritesNC(repository: repository)]
     }
     
@@ -30,8 +57,7 @@ class ECTabBarController: UITabBarController {
         let usecase: FetchCoinsUseCase = FetchCoinsUseCaseImpl(repository: repository)
         let coinsVM: CoinsVM = CoinsVM(fetchCoinsUseCase: usecase)
         let coinsVC = CoinsVC(viewModel: coinsVM)
-        coinsVC.title = "Home"
-        coinsVC.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
+        coinsVC.tabBarItem = UITabBarItem(title: "Home", image: AppImages.home, tag: 0)
         
         return UINavigationController(rootViewController: coinsVC)
     }
