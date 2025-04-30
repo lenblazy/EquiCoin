@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Coin: Identifiable {
+struct Coin: Hashable {
     let id: String
     let name: String
     let iconUrl: String

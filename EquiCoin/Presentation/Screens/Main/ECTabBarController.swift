@@ -30,7 +30,7 @@ class ECTabBarController: UITabBarController {
         let usecase: FetchCoinsUseCase = FetchCoinsUseCaseImpl(repository: repository)
         let coinsVM: CoinsVM = CoinsVM(fetchCoinsUseCase: usecase)
         let coinsVC = CoinsVC(viewModel: coinsVM)
-        coinsVC.title = "Coins"
+        coinsVC.title = "Home"
         coinsVC.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
         
         return UINavigationController(rootViewController: coinsVC)

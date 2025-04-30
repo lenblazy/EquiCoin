@@ -9,6 +9,17 @@ import UIKit
 
 class CoinsVC: UIViewController {
     
+    enum Section {
+        case main
+    }
+    
+    var page = 1
+    var hasMoreCoins = true
+    var isLoadingMoreCoins = false
+    
+    var collectionView: UICollectionView!
+    var datasource: UICollectionViewDiffableDataSource<Section, Coin>!
+    
     private let viewModel: CoinsVM
     
     init(viewModel: CoinsVM) {
