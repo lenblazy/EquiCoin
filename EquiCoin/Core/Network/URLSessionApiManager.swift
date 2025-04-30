@@ -8,18 +8,10 @@
 import Foundation
 
 struct UrlSessionApiManager: ApiManager {
-    private let baseURL = "https://api.coinranking.com/v2/coins"
     
-    func request<T: Codable>(with type: ApiType) async throws -> T {
-        guard let url = URL(string: baseURL + type.endpoint) else {
-            throw AppError.invalidRequestUrl
-        }
-
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
-
+    func request<T: Codable>(endpoint: EnpointProvider) async throws -> T {
         do {
-            let (data, response) = try await URLSession.shared.data(for: request)
+            let (data, response) = try await URLSession.shared.data(for: endpoint.asURLRequest())
 
             guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
                 throw AppError.invalidResponse
@@ -27,7 +19,6 @@ struct UrlSessionApiManager: ApiManager {
             
             let jsonStr = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
             debugPrint(jsonStr)
-//            debugPrint(data)
 
             let decoder = JSONDecoder()
             return try decoder.decode(T.self, from: data)

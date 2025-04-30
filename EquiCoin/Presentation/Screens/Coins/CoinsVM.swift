@@ -11,6 +11,7 @@ import Foundation
 class CoinsVM {
     var onCoinsUpdated: (([Coin]) -> Void)?
     var onError: ((String) -> Void)?
+    var isLoading: ((Bool) -> Void)?
     
     private let fetchCoinsUseCase: FetchCoinsUseCase
     
@@ -18,9 +19,11 @@ class CoinsVM {
         self.fetchCoinsUseCase = fetchCoinsUseCase
     }
     
-    func fetchCoins() {
+    func fetchCoins(page: Int) {
         Task {
-            let result = await fetchCoinsUseCase.execute()
+            self.isLoading?(true)
+            let result = await fetchCoinsUseCase.execute(page: page)
+            self.isLoading?(false)
             switch result {
             case .success(let coins):
                 self.onCoinsUpdated?(coins)

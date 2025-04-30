@@ -15,8 +15,8 @@ struct CoinsRepositoryImpl: CoinsRepository {
         self.datasource = datasource
     }
     
-    func fetchCoins() async -> Result<[Coin], AppError> {
-        let result = await datasource.coins()
+    func fetchCoins(page: Int) async -> Result<[Coin], AppError> {
+        let result = await datasource.coins(page: page)
         switch result {
         case .success(let coinsDto):
             let coins = coinsDto.map { coinDto in

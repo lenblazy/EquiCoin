@@ -20,33 +20,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let apiManager: ApiManager                  = UrlSessionApiManager()
         let datasource: CoinsDatasource             = ApiCoinsDatasource(apiManager: apiManager)
         let repository: CoinsRepository             = CoinsRepositoryImpl(datasource: datasource)
-        let rootVC: UIViewController                = ECTabBarController(repository: repository)
-        let navController: UIViewController         = UINavigationController(rootViewController: rootVC)
-            
-        window?.rootViewController                  = navController
+        
+        window?.rootViewController                  = ECTabBarController(repository: repository)
         window?.makeKeyAndVisible()
-        UINavigationBar.appearance().tintColor      = .systemGreen
     }
 
-    func sceneDidDisconnect(_ scene: UIScene) {
-        
-    }
+    func sceneDidDisconnect(_ scene: UIScene) {}
 
-    func sceneDidBecomeActive(_ scene: UIScene) {
-        
-    }
+    func sceneDidBecomeActive(_ scene: UIScene) {}
 
-    func sceneWillResignActive(_ scene: UIScene) {
-       
-    }
+    func sceneWillResignActive(_ scene: UIScene) {}
 
-    func sceneWillEnterForeground(_ scene: UIScene) {
-        
-    }
+    func sceneWillEnterForeground(_ scene: UIScene) {}
 
-    func sceneDidEnterBackground(_ scene: UIScene) {
-        
-    }
+    func sceneDidEnterBackground(_ scene: UIScene) {}
 
 
 }
