@@ -8,7 +8,7 @@
 import Foundation
 
 protocol CoinsDatasource {
-    func coins() async -> Result<[CoinDto], AppError>
+    func coins(page: Int) async -> Result<[CoinDto], AppError>
 }
 
 class ApiCoinsDatasource: CoinsDatasource {
@@ -19,9 +19,10 @@ class ApiCoinsDatasource: CoinsDatasource {
         self.apiManager = apiManager
     }
     
-    func coins() async -> Result<[CoinDto], AppError> {
+    func coins(page: Int) async -> Result<[CoinDto], AppError> {
         do {
-            let response: CoinsResponse = try await apiManager.request(with: ApiType.fetchCoins)
+            let endpoint = ApiEndpoints.fetchCoins(page: page)
+            let response: CoinsResponse = try await apiManager.request(endpoint: endpoint)
             guard let coins = response.data?.coins, coins.isEmpty == false else {
                 return .failure(AppError.noCoinsFound)
             }

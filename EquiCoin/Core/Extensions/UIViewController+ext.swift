@@ -22,12 +22,13 @@ extension UIViewController{
         containerView = UIView(frame: view.bounds)
         view.addSubview(containerView)
         
-        containerView.backgroundColor   = .systemBackground
+        containerView.backgroundColor   = AppColors.dark
         containerView.alpha             = 0
         
         UIView.animate(withDuration: 0.25) { containerView.alpha = 0.8 }
         
         let activityIndicator   = UIActivityIndicatorView(style: .large)
+        activityIndicator.color = AppColors.grayLight
         containerView.addSubview(activityIndicator)
         
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
@@ -45,12 +46,17 @@ extension UIViewController{
         containerView = nil
     }
     
-    //    func showEmptyStateView(with message: String, in View: UIView){
-    //        let emptryStateView = GFEmptyStateView(message: message)
-    //        emptryStateView.frame = view.bounds
-    //        view.addSubview(emptryStateView)
-    //    }
-    //
+    func showEmptyStateView(title: String, message: String, image: UIImage = AppImages.favorite) {
+        var config                              = UIContentUnavailableConfiguration.empty()
+        config.image                            = image
+        config.text                             = title
+        config.secondaryText                    = message
+        config.imageProperties.tintColor        = AppColors.grayDark
+        config.textProperties.color             = AppColors.grayLight
+        config.secondaryTextProperties.color    = AppColors.grayDark
+        contentUnavailableConfiguration         = config
+    }
+    
     //    func presentSafariVC(with url: URL){
     //        let safariVC = SFSafariViewController(url: url)
     //        safariVC.preferredControlTintColor = .systemGreen

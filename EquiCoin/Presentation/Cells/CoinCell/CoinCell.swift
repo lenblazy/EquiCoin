@@ -16,7 +16,8 @@ class CoinCell: UICollectionViewCell {
     let minCapLabel     = AppBodyLabel()
     let maxCapLabel     = AppBodyLabel()
     let coinImageView   = AppImageView()
-    
+    var stackMain       = UIStackView()
+    var stackPerform    = UIStackView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -31,11 +32,22 @@ class CoinCell: UICollectionViewCell {
     
     private func configure() {
         contentView.backgroundColor = AppColors.brand.withAlphaComponent(0.1)
-        contentView.addSubview(coinLabel)
-        contentView.addSubview(priceLabel)
-        contentView.addSubview(minCapLabel)
-        contentView.addSubview(maxCapLabel)
+        contentView.addSubview(stackMain)
+        contentView.addSubview(stackPerform)
         contentView.addSubview(coinImageView)
+        
+        stackMain.axis      = .vertical
+        stackMain.spacing   = 4
+        stackMain.addArrangedSubview(coinLabel)
+        stackMain.addArrangedSubview(priceLabel)
+        stackMain.translatesAutoresizingMaskIntoConstraints = false
+        
+        
+        stackPerform.axis      = .vertical
+        stackPerform.spacing   = 4
+        stackPerform.addArrangedSubview(maxCapLabel)
+        stackPerform.addArrangedSubview(minCapLabel)
+        stackPerform.translatesAutoresizingMaskIntoConstraints = false
         
         let paddingH: CGFloat = 16
         let paddingV: CGFloat = 8
@@ -46,21 +58,11 @@ class CoinCell: UICollectionViewCell {
             coinImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: paddingH),
             coinImageView.widthAnchor.constraint(equalTo: coinImageView.heightAnchor),
             
-            coinLabel.topAnchor.constraint(equalTo: topAnchor, constant: paddingV),
-            coinLabel.leadingAnchor.constraint(equalTo: coinImageView.trailingAnchor, constant: paddingH),
-            coinLabel.heightAnchor.constraint(equalToConstant: 18),
+            stackMain.centerYAnchor.constraint(equalTo: centerYAnchor),
+            stackMain.leadingAnchor.constraint(equalTo: coinImageView.trailingAnchor, constant: paddingH),
             
-            priceLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -paddingV),
-            priceLabel.leadingAnchor.constraint(equalTo: coinLabel.leadingAnchor),
-            priceLabel.heightAnchor.constraint(equalToConstant: 16),
-            
-            maxCapLabel.topAnchor.constraint(equalTo: topAnchor, constant: paddingV),
-            maxCapLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -paddingH),
-            maxCapLabel.heightAnchor.constraint(equalToConstant: 16),
-            
-            minCapLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -paddingV),
-            minCapLabel.trailingAnchor.constraint(equalTo: maxCapLabel.trailingAnchor),
-            minCapLabel.heightAnchor.constraint(equalToConstant: 16),
+            stackPerform.centerYAnchor.constraint(equalTo: centerYAnchor),
+            stackPerform.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -paddingH),
         ])
         
     }

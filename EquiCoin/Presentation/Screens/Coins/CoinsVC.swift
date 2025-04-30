@@ -13,7 +13,7 @@ class CoinsVC: UIViewController {
         case main
     }
     
-    var page = 1
+    var page = 0
     var hasMoreCoins = true
     var isLoadingMoreCoins = false
     var coins: [Coin] = []
@@ -37,7 +37,7 @@ class CoinsVC: UIViewController {
         super.viewDidLoad()
         configureUI()
         setupBindings()
-        viewModel.fetchCoins()
+        viewModel.fetchCoins(page: page)
     }
     
     
@@ -80,7 +80,7 @@ class CoinsVC: UIViewController {
         if coins.count < pagCount { self.hasMoreCoins = false }
         self.coins.append(contentsOf: coins)
         if self.coins.isEmpty {
-            //TODO: Show empty view
+            showEmptyStateView(title: "Coins", message: "No coins found")
             return
         }
         
@@ -110,25 +110,27 @@ class CoinsVC: UIViewController {
 
 extension CoinsVC: UICollectionViewDelegate {
     
-//    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-//        let offsetY         = scrollView.contentOffset.y
-//        let contentHeight   = scrollView.contentSize.height
-//        let height          = scrollView.frame.size.height
-//        
-//        if offsetY > contentHeight - height {
-//            guard hasMoreFollowers, !isLoadingMoreFollowers else { return }
-//            page += 1
-//            getFollowers(username: userName, page: page)
-//        }
-//        
-//    }
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        let offsetY         = scrollView.contentOffset.y
+        let contentHeight   = scrollView.contentSize.height
+        let height          = scrollView.frame.size.height
+        
+        if offsetY > contentHeight - height {
+            guard hasMoreCoins, !isLoadingMoreCoins else { return }
+            if coins.count >= 100 {
+                presentAlert(message: "You have loaded a Maximum of 100 coins")
+                return
+            }
+            page += 1
+            viewModel.fetchCoins(page: page)
+        }
+        
+    }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let destVC = CoinDetailsVC()
-//        destVC.username = follower.login
-//        destVC.delegate = self
-        let navController = UINavigationController(rootViewController: destVC)
-        present(navController, animated: true)
+        destVC.coin = coins[indexPath.row]
+        navigationController?.pushViewController(destVC, animated: true)
     }
     
 }

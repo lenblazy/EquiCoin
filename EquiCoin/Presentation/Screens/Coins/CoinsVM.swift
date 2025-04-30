@@ -19,10 +19,10 @@ class CoinsVM {
         self.fetchCoinsUseCase = fetchCoinsUseCase
     }
     
-    func fetchCoins() {
+    func fetchCoins(page: Int) {
         Task {
             self.isLoading?(true)
-            let result = await fetchCoinsUseCase.execute()
+            let result = await fetchCoinsUseCase.execute(page: page)
             self.isLoading?(false)
             switch result {
             case .success(let coins):

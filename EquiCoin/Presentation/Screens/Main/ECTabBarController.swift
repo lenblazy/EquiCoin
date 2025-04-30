@@ -22,33 +22,29 @@ class ECTabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureUI()
+    }
+    
+    
+    private func configureUI() {
         UINavigationBar.appearance().tintColor = AppColors.brand
         tabBar.barTintColor = AppColors.dark
         tabBar.unselectedItemTintColor = AppColors.grayDark
-        if #available(iOS 15.0, *) {
-            let appearance = UINavigationBarAppearance()
-            appearance.configureWithOpaqueBackground()
-            appearance.backgroundColor = AppColors.dark
-            appearance.titleTextAttributes = [
-                .foregroundColor: AppColors.light,
-                .font: UIFont.boldSystemFont(ofSize: 16)
-            ]
-            appearance.largeTitleTextAttributes = [
-                .foregroundColor: AppColors.light,
-                .font: UIFont.boldSystemFont(ofSize: 34)
-            ]
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = AppColors.dark
+        appearance.titleTextAttributes = [
+            .foregroundColor: AppColors.light,
+            .font: UIFont.boldSystemFont(ofSize: 16)
+        ]
+        appearance.largeTitleTextAttributes = [
+            .foregroundColor: AppColors.light,
+            .font: UIFont.boldSystemFont(ofSize: 34)
+        ]
 
-            UINavigationBar.appearance().standardAppearance = appearance
-            UINavigationBar.appearance().scrollEdgeAppearance = appearance
-            UINavigationBar.appearance().compactAppearance = appearance
-            
-        } else {
-            UINavigationBar.appearance().barTintColor = .white
-            UINavigationBar.appearance().titleTextAttributes = [
-                .foregroundColor: AppColors.light,
-                .font: UIFont.boldSystemFont(ofSize: 16)
-            ]
-        }
+        UINavigationBar.appearance().standardAppearance = appearance
+        UINavigationBar.appearance().scrollEdgeAppearance = appearance
+        UINavigationBar.appearance().compactAppearance = appearance
         
         viewControllers = [createCoinsNC(repository: repository), createFavoritesNC(repository: repository)]
     }
