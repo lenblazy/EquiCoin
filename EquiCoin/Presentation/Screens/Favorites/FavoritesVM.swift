@@ -8,23 +8,23 @@
 import Foundation
 
 @MainActor
-class CoinsVM {
+class FavoritesVM {
     var onCoinsUpdated: (([Coin]) -> Void)?
     var onError: ((String) -> Void)?
     var isLoading: ((Bool) -> Void)?
     
-    private let fetchCoinsUseCase: GetCoinsUseCase
-    private let addFavoriteCoinUseCase: AddFavoriteCoinUseCase
-
-    init(fetchCoinsUseCase: GetCoinsUseCase,addFavoriteCoinUseCase: AddFavoriteCoinUseCase) {
-        self.fetchCoinsUseCase = fetchCoinsUseCase
-        self.addFavoriteCoinUseCase = addFavoriteCoinUseCase
+    private let getFavoriteCoinsUseCase: GetFavoriteCoinsUseCase
+    private let removeFavoriteCoinUseCase: RemoveFavoriteCoinUseCase
+    
+    init(getFavoriteCoinsUseCase: GetFavoriteCoinsUseCase, removeFavoriteCoinUseCase: RemoveFavoriteCoinUseCase) {
+        self.getFavoriteCoinsUseCase = getFavoriteCoinsUseCase
+        self.removeFavoriteCoinUseCase = removeFavoriteCoinUseCase
     }
     
-    func fetchCoins(page: Int) {
+    func fetchFavoriteCoins() {
         Task {
             self.isLoading?(true)
-            let result = await fetchCoinsUseCase.execute(page: page)
+            let result = await getFavoriteCoinsUseCase.execute()
             self.isLoading?(false)
             switch result {
             case .success(let coins):
@@ -33,13 +33,13 @@ class CoinsVM {
                 self.onError?(error.rawValue)
             }
         }
-        
     }
     
-    func favoriteCoin(id: String) {
+    func unFavoriteCoin(id: String) {
         Task {
             do {
-                try await addFavoriteCoinUseCase.execute(id: id)
+                try await removeFavoriteCoinUseCase.execute(id: id)
+                fetchFavoriteCoins()
             } catch let error as AppError {
                 self.onError?(error.rawValue)
             } catch {
@@ -47,4 +47,5 @@ class CoinsVM {
             }
         }
     }
+    
 }

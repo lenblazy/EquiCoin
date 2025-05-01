@@ -8,10 +8,10 @@
 import Foundation
 
 protocol GetFavoriteCoinsUseCase {
-    func execute(page: Int) async -> Result<[Coin], AppError>
+    func execute() async -> Result<[Coin], AppError>
 }
 
-class GetFavoriteCoinsUseCaseImpl: GetCoinsUseCase {
+class GetFavoriteCoinsUseCaseImpl: GetFavoriteCoinsUseCase {
     
     private let repository: CoinsRepository
     
@@ -19,8 +19,8 @@ class GetFavoriteCoinsUseCaseImpl: GetCoinsUseCase {
         self.repository = repository
     }
     
-    func execute(page: Int) async -> Result<[Coin], AppError> {
-        return await repository.fetchCoins(page: page)
+    func execute() async -> Result<[Coin], AppError> {
+        return await repository.fetchFavoriteCoins()
     }
     
 }
