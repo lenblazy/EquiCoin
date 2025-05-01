@@ -39,7 +39,7 @@ class FavoritesVC: UIViewController {
         view.backgroundColor    = AppColors.dark
         title                   = "Favorites"
         navigationController?.navigationBar.prefersLargeTitles = true
-        showEmptyStateView(title: "Favorites", message: "No favorites yet")
+        
     }
     
     private func setupBindings() {
@@ -51,7 +51,7 @@ class FavoritesVC: UIViewController {
         
         viewModel.onError = { [weak self] errorMessage in
             guard let strongSelf = self else { return }
-            strongSelf.presentAlert(message: errorMessage)
+            strongSelf.showEmptyStateView(title: "Favorites", message: errorMessage)
         }
         
         viewModel.isLoading = { [weak self] isLoading in
