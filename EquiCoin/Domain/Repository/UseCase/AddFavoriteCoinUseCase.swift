@@ -7,11 +7,11 @@
 
 import Foundation
 
-protocol FetchCoinsUseCase {
-    func execute(page: Int) async -> Result<[Coin], AppError>
+protocol AddFavoriteCoinUseCase {
+    func execute(id: String) async throws -> Void
 }
 
-class FetchCoinsUseCaseImpl: FetchCoinsUseCase {
+class AddFavoriteCoinUseCaseImpl: AddFavoriteCoinUseCase {
     
     private let repository: CoinsRepository
     
@@ -19,8 +19,8 @@ class FetchCoinsUseCaseImpl: FetchCoinsUseCase {
         self.repository = repository
     }
     
-    func execute(page: Int) async -> Result<[Coin], AppError> {
-        return await repository.fetchCoins(page: page)
+    func execute(id: String) async throws -> Void {
+        return try await repository.favoriteCoin(id: id)
     }
     
 }

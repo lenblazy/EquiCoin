@@ -9,6 +9,9 @@ import Foundation
 
 protocol CoinsDatasource {
     func coins(page: Int) async -> Result<[CoinDto], AppError>
+    func fetchFavoriteCoins() async -> Result<[Coin], AppError>
+    func favoriteCoin(id: String) async throws -> Void
+    func unFavoriteCoin(id: String) async throws -> Void
 }
 
 class ApiCoinsDatasource: CoinsDatasource {
@@ -31,5 +34,18 @@ class ApiCoinsDatasource: CoinsDatasource {
             return .failure(error as? AppError ?? AppError.unableToComplete)
         }
     }
+    
+    func fetchFavoriteCoins() async -> Result<[Coin], AppError> {
+        return .success([])
+    }
+    
+    func favoriteCoin(id: String) async throws {
+        debugPrint("Coin iD \(id)")
+    }
+    
+    func unFavoriteCoin(id: String) async throws {
+        debugPrint("Coin iD \(id)")
+    }
+
     
 }

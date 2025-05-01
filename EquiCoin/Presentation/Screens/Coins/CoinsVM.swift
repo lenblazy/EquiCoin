@@ -13,9 +13,9 @@ class CoinsVM {
     var onError: ((String) -> Void)?
     var isLoading: ((Bool) -> Void)?
     
-    private let fetchCoinsUseCase: FetchCoinsUseCase
+    private let fetchCoinsUseCase: GetCoinsUseCase
     
-    init(fetchCoinsUseCase: FetchCoinsUseCase) {
+    init(fetchCoinsUseCase: GetCoinsUseCase) {
         self.fetchCoinsUseCase = fetchCoinsUseCase
     }
     

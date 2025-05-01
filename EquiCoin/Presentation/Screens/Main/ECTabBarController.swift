@@ -50,7 +50,7 @@ class ECTabBarController: UITabBarController {
     }
     
     private func createCoinsNC(repository: CoinsRepository) -> UINavigationController {
-        let usecase: FetchCoinsUseCase = FetchCoinsUseCaseImpl(repository: repository)
+        let usecase: GetCoinsUseCase = GetCoinsUseCaseImpl(repository: repository)
         let coinsVM: CoinsVM = CoinsVM(fetchCoinsUseCase: usecase)
         let coinsVC = CoinsVC(viewModel: coinsVM)
         coinsVC.tabBarItem = UITabBarItem(title: "Home", image: AppImages.home, tag: 0)

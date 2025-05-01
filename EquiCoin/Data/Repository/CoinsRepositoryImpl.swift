@@ -27,4 +27,17 @@ struct CoinsRepositoryImpl: CoinsRepository {
             return .failure(error)
         }
     }
+    
+    func fetchFavoriteCoins() async -> Result<[Coin], AppError> {
+        return await datasource.fetchFavoriteCoins()
+    }
+    
+    func favoriteCoin(id: String) async throws {
+        debugPrint("Coin in repo")
+    }
+    
+    func unFavoriteCoin(id: String) async throws {
+        debugPrint("Coin out from repo")
+    }
+    
 }
