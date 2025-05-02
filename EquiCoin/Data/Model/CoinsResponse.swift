@@ -15,16 +15,15 @@ struct CoinsData: Codable {
 }
 
 struct CoinDto: Codable {
-    let uuid, symbol, name, color: String?
+    let uuid: String?
+    let name: String?
     let iconUrl: String?
     let price: String?
-//    let listedAt: Int?
-//    let change: String?
-//    let rank: Int?
-//    let sparkline: [String]?
-//    let lowVolume: Bool?
-//    let coinrankingURL: String?
-//    let the24HVolume, btcPrice: String?
-//    let contractAddresses: [String]?
-//    let tier: Int?
+    let _24hVolume : String?
+    
+    enum CodingKeys: String, CodingKey {
+        case uuid, name, iconUrl, price
+        case _24hVolume = "24hVolume"
+    }
+    
 }

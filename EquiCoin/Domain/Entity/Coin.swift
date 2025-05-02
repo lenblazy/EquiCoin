@@ -12,4 +12,5 @@ struct Coin: Hashable, Codable {
     let name: String
     let iconUrl: String
     let price: String
+    let volume: String
 }

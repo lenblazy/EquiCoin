@@ -14,7 +14,7 @@ class CoinCell: UITableViewCell {
     let coinLabel       = AppTitleLabel()
     let priceLabel      = AppBodyLabel()
     let minCapLabel     = AppBodyLabel()
-    let maxCapLabel     = AppBodyLabel()
+    let maxCapLabel     = AppTitleLabel(textAlignment: .left, fontSize: 14, color: AppColors.grayDark)
     let coinImageView   = AppCacheImageView()
     var stackMain       = UIStackView()
     var stackPerform    = UIStackView()
@@ -46,6 +46,7 @@ class CoinCell: UITableViewCell {
         
         stackPerform.axis      = .vertical
         stackPerform.spacing   = 4
+        stackPerform.alignment = .trailing
         stackPerform.addArrangedSubview(maxCapLabel)
         stackPerform.addArrangedSubview(minCapLabel)
         stackPerform.translatesAutoresizingMaskIntoConstraints = false
@@ -61,6 +62,7 @@ class CoinCell: UITableViewCell {
             
             stackMain.centerYAnchor.constraint(equalTo: centerYAnchor),
             stackMain.leadingAnchor.constraint(equalTo: coinImageView.trailingAnchor, constant: paddingH),
+            stackMain.trailingAnchor.constraint(equalTo: stackPerform.leadingAnchor, constant: -paddingH),
             
             stackPerform.centerYAnchor.constraint(equalTo: centerYAnchor),
             stackPerform.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -paddingH),
@@ -73,8 +75,8 @@ class CoinCell: UITableViewCell {
         coinImageView.loadImage(from: coin.iconUrl)
         coinLabel.text      = coin.name
         priceLabel.text     = coin.price
-        maxCapLabel.text    = coin.price
-        minCapLabel.text    = coin.price
+        minCapLabel.text    = coin.volume
+        maxCapLabel.text    = "24H Volume:"
     }
     
 }

@@ -32,9 +32,7 @@ extension EnpointProvider {
         if let queryItems = queryItems {
             components.queryItems = queryItems
         }
-                
-        debugPrint("URL components is \(components)")
-        
+                        
         guard let url = fullStringUrl != nil ? URL(string: fullStringUrl!) : components.url else { throw AppError.invalidRequestUrl }
         
         var urlRequest = URLRequest(url: url)

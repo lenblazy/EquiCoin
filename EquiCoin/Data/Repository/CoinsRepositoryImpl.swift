@@ -20,7 +20,13 @@ struct CoinsRepositoryImpl: CoinsRepository {
         switch result {
         case .success(let coinsDto):
             let coins = coinsDto.map { coinDto in
-                Coin(id: coinDto.uuid ?? "0", name: coinDto.name ?? "", iconUrl: coinDto.iconUrl ?? "", price: coinDto.price ?? "")
+                Coin(
+                    id: coinDto.uuid ?? "0",
+                    name: coinDto.name ?? "",
+                    iconUrl: coinDto.iconUrl ?? "",
+                    price: (coinDto.price ?? "").formatPrice(),
+                    volume: coinDto._24hVolume ?? ""
+                )
             }
             return .success(coins)
         case .failure(let error):
