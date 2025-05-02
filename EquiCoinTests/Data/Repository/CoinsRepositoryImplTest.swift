@@ -20,7 +20,7 @@ final class CoinsRepositoryImplTests: XCTestCase {
     }
     
     func testFetchCoins_success() async {
-        mockDatasource.coinsResult = .success([makeCoinDto()])
+        mockDatasource.coinsResult = .success([TestHelpers.makeCoinDto()])
         
         let result = await repository.fetchCoins(page: 1)
         
@@ -46,7 +46,7 @@ final class CoinsRepositoryImplTests: XCTestCase {
     }
     
     func testCoinDetails_success() async {
-        mockDatasource.coinDetailsResult = .success(makeCoinDto(name: "Ethereum"))
+        mockDatasource.coinDetailsResult = .success(TestHelpers.makeCoinDto(name: "Ethereum"))
         
         let result = await repository.coinDetails(id: "", period: "")
         
@@ -72,7 +72,7 @@ final class CoinsRepositoryImplTests: XCTestCase {
     }
     
     func testFetchFavoriteCoins_success() async {
-        mockDatasource.favoriteCoinsResult = .success([makeCoinDto(id: "btc").toDomainModel()])
+        mockDatasource.favoriteCoinsResult = .success([TestHelpers.makeCoinDto(id: "btc").toDomainModel()])
         
         let result = await repository.fetchFavoriteCoins()
         
@@ -86,21 +86,18 @@ final class CoinsRepositoryImplTests: XCTestCase {
     }
     
     func testFavoriteCoin_callsDatasource() async throws {
-        try await repository.favoriteCoin(coin: makeCoinDto(id: "btc").toDomainModel())
+        try await repository.favoriteCoin(coin: TestHelpers.makeCoinDto(id: "btc").toDomainModel())
         XCTAssertEqual(mockDatasource.lastFavoriteCoin?.id, "btc")
         XCTAssertEqual(mockDatasource.lastFavoriteAction, .add)
     }
     
     func testUnFavoriteCoin_callsDatasource() async throws {
-        try await repository.unFavoriteCoin(coin: makeCoinDto(id: "eth").toDomainModel())
+        try await repository.unFavoriteCoin(coin: TestHelpers.makeCoinDto(id: "eth").toDomainModel())
         
         XCTAssertEqual(mockDatasource.lastFavoriteCoin?.id, "eth")
         XCTAssertEqual(mockDatasource.lastFavoriteAction, .remove)
     }
-    
-    func makeCoinDto(id: String? = nil, name: String? = nil) -> CoinDto {
-        return CoinDto(uuid: id, name: name)
-    }
+
     
 }
 
