@@ -25,14 +25,17 @@ struct CoinDto: Codable {
     var marketCap : String? = nil
     var symbol : String? = nil
     var bitCoinPrice : String? = nil
+    var allTimeHigh : AllTimeHigh? = nil
+    var supply : CirculatingSupply? = nil
     
     enum CodingKeys: String, CodingKey {
-        case uuid, name, iconUrl, price, change, sparkline, marketCap, symbol
+        case uuid, name, iconUrl, price, change, sparkline, marketCap, symbol, allTimeHigh, supply
         case _24hVolume = "24hVolume"
         case bitCoinPrice = "btcPrice"
     }
     
 }
+
 
 extension CoinDto {
     func toDomainModel() -> Coin {
@@ -46,7 +49,22 @@ extension CoinDto {
             sparkLine: (self.sparkline ?? []).map { Double($0 ?? "0") ?? 0.0 },
             marketCap: self.marketCap ?? "",
             bitCoinPrice: self.bitCoinPrice ?? "",
-            symbol: self.symbol ?? ""
+            symbol: self.symbol ?? "",
+            circulatingSupply: self.supply?.circulating ?? "",
+            allTimeHigh: (self.allTimeHigh?.price ?? "").formatPrice()
         )
     }
 }
+
+
+struct AllTimeHigh: Codable {
+    var price: String? = nil
+}
+
+
+struct CirculatingSupply: Codable {
+    var circulating: String? = nil
+}
+
+
+

@@ -10,12 +10,17 @@ import SwiftUI
 
 class CoinDetailsVC: UIViewController {
     
-    let labelPrice  = AppTitleLabel(textAlignment: .center, fontSize: 30, color: AppColors.light)
-    let labelChange = AppBodyLabel(textAlignment: .center, fontSize: 18, color: AppColors.grayLight)
-    let statMarket  = StatView()
-    let statVolume  = StatView()
-    let statSymbol  = StatView()
-    let statBtPrice = StatView()
+    let labelPrice      = AppTitleLabel(textAlignment: .center, fontSize: 30, color: AppColors.light)
+    let labelChange     = AppBodyLabel(textAlignment: .center, fontSize: 18, color: AppColors.grayLight)
+    let statMarket      = StatView()
+    let statVolume      = StatView()
+    let statSymbol      = StatView()
+    let statBtPrice     = StatView()
+    let statAllTimeHigh = StatView()
+    let statCirculation = StatView()
+    let stackBtns       = UIStackView()
+             
+    var filters: [SelectableButton] = []
     
     private let viewModel: CoinDetailsVM
     private var period = "24h"
@@ -45,6 +50,8 @@ class CoinDetailsVC: UIViewController {
         super.viewDidLoad()
         configureUI()
         setupBindings()
+        let defaultPick = filters.first { $0.titleLabel?.text == period }
+        defaultPick?.isSelected = true
         viewModel.fetchCoinDetails(coinID: coin.id, period: period)
     }
     
@@ -57,16 +64,41 @@ class CoinDetailsVC: UIViewController {
     
     
     private func layoutViews() {
+        let paddingLarge: CGFloat = 16
+        let paddingSmall: CGFloat = 8
+        
+        stackBtns.translatesAutoresizingMaskIntoConstraints = false
+        stackBtns.axis = .horizontal
+        stackBtns.spacing = paddingSmall
+        stackBtns.distribution = .fillProportionally
+        filters.append(contentsOf: [
+//            SelectableButton(title: "1h"),
+//            SelectableButton(title: "3h"),
+            SelectableButton(title: "12h"),
+            SelectableButton(title: "24h"),
+            SelectableButton(title: "7d"),
+            SelectableButton(title: "30d"),
+            SelectableButton(title: "3m"),
+            SelectableButton(title: "1y"),
+//            SelectableButton(title: "3y"),
+//            SelectableButton(title: "5y")
+        ])
+        
+        filters.forEach {
+            stackBtns.addArrangedSubview($0)
+            $0.addTarget(self, action: #selector(filterResults), for: .touchUpInside)
+        }
+        
         view.addSubview(labelPrice)
         view.addSubview(labelChange)
         view.addSubview(chartView)
+        view.addSubview(stackBtns)
         view.addSubview(statMarket)
         view.addSubview(statVolume)
         view.addSubview(statSymbol)
         view.addSubview(statBtPrice)
-        
-        let paddingLarge: CGFloat = 16
-        let paddingSmall: CGFloat = 8
+        view.addSubview(statAllTimeHigh)
+        view.addSubview(statCirculation)
         
         NSLayoutConstraint.activate([
             labelPrice.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: paddingLarge),
@@ -82,7 +114,11 @@ class CoinDetailsVC: UIViewController {
             chartView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -paddingLarge),
             chartView.heightAnchor.constraint(equalToConstant: 200),
             
-            statMarket.topAnchor.constraint(equalTo: chartView.bottomAnchor, constant: paddingLarge),
+            stackBtns.topAnchor.constraint(equalTo: chartView.bottomAnchor, constant: paddingLarge),
+            stackBtns.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: paddingLarge),
+            stackBtns.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -paddingLarge),
+            
+            statMarket.topAnchor.constraint(equalTo: stackBtns.bottomAnchor, constant: paddingLarge),
             statMarket.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: paddingLarge),
             statMarket.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -paddingLarge),
             
@@ -96,10 +132,27 @@ class CoinDetailsVC: UIViewController {
             
             statSymbol.topAnchor.constraint(equalTo: statBtPrice.bottomAnchor, constant: paddingLarge),
             statSymbol.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: paddingLarge),
-            statSymbol.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -paddingLarge)
+            statSymbol.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -paddingLarge),
+            
+            statAllTimeHigh.topAnchor.constraint(equalTo: statSymbol.bottomAnchor, constant: paddingLarge),
+            statAllTimeHigh.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: paddingLarge),
+            statAllTimeHigh.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -paddingLarge),
+            
+            statCirculation.topAnchor.constraint(equalTo: statAllTimeHigh.bottomAnchor, constant: paddingLarge),
+            statCirculation.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: paddingLarge),
+            statCirculation.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -paddingLarge)
             
         ])
         
+        
+    }
+    
+    @objc func filterResults(_ sender: SelectableButton) {
+        filters.forEach { $0.isSelected = ($0 == sender) ? !$0.isSelected : false }
+        if let time = sender.titleLabel?.text {
+            period = time
+            viewModel.fetchCoinDetails(coinID: coin.id, period: period)
+        }
         
     }
     
@@ -126,6 +179,8 @@ class CoinDetailsVC: UIViewController {
         statVolume.populate(title: "Volume 24H", message: coin.volume)
         statBtPrice.populate(title: "Bitcoin Price", message: coin.bitCoinPrice)
         statSymbol.populate(title: "Symbol", message: coin.symbol)
+        statAllTimeHigh.populate(title: "Circulating Supply", message: coin.circulatingSupply)
+        statCirculation.populate(title: "All Time High", message: coin.allTimeHigh)
     }
     
     

@@ -18,4 +18,6 @@ struct Coin: Hashable, Codable {
     let marketCap: String
     let bitCoinPrice: String
     let symbol: String
+    let circulatingSupply: String
+    let allTimeHigh: String
 }
