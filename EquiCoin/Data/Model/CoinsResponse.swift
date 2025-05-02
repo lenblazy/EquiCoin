@@ -6,25 +6,11 @@
 //
 
 struct CoinsResponse: Codable {
-    let status: String?
-    let data: CoinsData?
+    var status: String? = nil
+    var data: CoinsData? = nil
 }
 
 struct CoinsData: Codable {
-    let coins: [CoinDto]?
+    var coins: [CoinDto]? = nil
 }
 
-struct CoinDto: Codable {
-    let uuid, symbol, name, color: String?
-    let iconUrl: String?
-    let price: String?
-//    let listedAt: Int?
-//    let change: String?
-//    let rank: Int?
-//    let sparkline: [String]?
-//    let lowVolume: Bool?
-//    let coinrankingURL: String?
-//    let the24HVolume, btcPrice: String?
-//    let contractAddresses: [String]?
-//    let tier: Int?
-}

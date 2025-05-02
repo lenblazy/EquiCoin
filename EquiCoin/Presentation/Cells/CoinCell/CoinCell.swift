@@ -7,20 +7,21 @@
 
 import UIKit
 
-class CoinCell: UICollectionViewCell {
+class CoinCell: UITableViewCell {
     
     static let reuseID = "FollowerCell"
     
     let coinLabel       = AppTitleLabel()
     let priceLabel      = AppBodyLabel()
     let minCapLabel     = AppBodyLabel()
-    let maxCapLabel     = AppBodyLabel()
-    let coinImageView   = AppImageView()
+    let maxCapLabel     = AppTitleLabel(textAlignment: .left, fontSize: 14, color: AppColors.grayDark)
+    let coinImageView   = AppCacheImageView()
     var stackMain       = UIStackView()
     var stackPerform    = UIStackView()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         configure()
     }
     
@@ -31,7 +32,7 @@ class CoinCell: UICollectionViewCell {
     
     
     private func configure() {
-        contentView.backgroundColor = AppColors.brand.withAlphaComponent(0.1)
+        contentView.backgroundColor = AppColors.dark
         contentView.addSubview(stackMain)
         contentView.addSubview(stackPerform)
         contentView.addSubview(coinImageView)
@@ -45,6 +46,7 @@ class CoinCell: UICollectionViewCell {
         
         stackPerform.axis      = .vertical
         stackPerform.spacing   = 4
+        stackPerform.alignment = .trailing
         stackPerform.addArrangedSubview(maxCapLabel)
         stackPerform.addArrangedSubview(minCapLabel)
         stackPerform.translatesAutoresizingMaskIntoConstraints = false
@@ -60,6 +62,7 @@ class CoinCell: UICollectionViewCell {
             
             stackMain.centerYAnchor.constraint(equalTo: centerYAnchor),
             stackMain.leadingAnchor.constraint(equalTo: coinImageView.trailingAnchor, constant: paddingH),
+            stackMain.trailingAnchor.constraint(equalTo: stackPerform.leadingAnchor, constant: -paddingH),
             
             stackPerform.centerYAnchor.constraint(equalTo: centerYAnchor),
             stackPerform.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -paddingH),
@@ -69,11 +72,11 @@ class CoinCell: UICollectionViewCell {
     
     
     func set(coin: Coin) {
-//        coinImageView.text = coin.name
-        coinLabel.text = coin.name
-        priceLabel.text = coin.price
-        maxCapLabel.text = coin.price
-        minCapLabel.text = coin.price
+        coinImageView.loadImage(from: coin.iconUrl)
+        coinLabel.text      = coin.name
+        priceLabel.text     = coin.price
+        minCapLabel.text    = coin.volume
+        maxCapLabel.text    = "24H Volume:"
     }
     
 }

@@ -11,7 +11,6 @@ protocol EnpointProvider {
     var scheme: String { get }
     var endpoint: String { get }
     var baseUrl: String { get }
-    var fullStringUrl: String? { get }
     var method: HttpMethod { get }
     var queryItems: [URLQueryItem]? { get }
 }
@@ -32,10 +31,8 @@ extension EnpointProvider {
         if let queryItems = queryItems {
             components.queryItems = queryItems
         }
-                
-        debugPrint("URL components is \(components)")
-        
-        guard let url = fullStringUrl != nil ? URL(string: fullStringUrl!) : components.url else { throw AppError.invalidRequestUrl }
+                        
+        guard let url = components.url else { throw AppError.invalidRequestUrl }
         
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = method.rawValue

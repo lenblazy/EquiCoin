@@ -12,4 +12,12 @@ struct Coin: Hashable, Codable {
     let name: String
     let iconUrl: String
     let price: String
+    let change: String
+    let volume: String
+    let sparkLine: [Double]
+    let marketCap: String
+    let bitCoinPrice: String
+    let symbol: String
+    let circulatingSupply: String
+    let allTimeHigh: String
 }

@@ -20,10 +20,11 @@ class AppTitleLabel: UILabel {
     }
     
     
-    convenience init(textAlignment: NSTextAlignment, fontSize: CGFloat) {
+    convenience init(textAlignment: NSTextAlignment, fontSize: CGFloat, color: UIColor) {
         self.init(frame: .zero)
         self.textAlignment = textAlignment
         self.font = UIFont.systemFont(ofSize: fontSize, weight: .bold)
+        self.textColor = color
     }
     
     

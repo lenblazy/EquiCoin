@@ -50,8 +50,9 @@ class ECTabBarController: UITabBarController {
     }
     
     private func createCoinsNC(repository: CoinsRepository) -> UINavigationController {
-        let usecase: FetchCoinsUseCase = FetchCoinsUseCaseImpl(repository: repository)
-        let coinsVM: CoinsVM = CoinsVM(fetchCoinsUseCase: usecase)
+        let usecase: GetCoinsUseCase = GetCoinsUseCaseImpl(repository: repository)
+        let addFavoriteCoinUseCase: AddFavoriteCoinUseCase = AddFavoriteCoinUseCaseImpl(repository: repository)
+        let coinsVM: CoinsVM = CoinsVM(fetchCoinsUseCase: usecase, addFavoriteCoinUseCase: addFavoriteCoinUseCase)
         let coinsVC = CoinsVC(viewModel: coinsVM)
         coinsVC.tabBarItem = UITabBarItem(title: "Home", image: AppImages.home, tag: 0)
         
@@ -59,7 +60,10 @@ class ECTabBarController: UITabBarController {
     }
     
     private func createFavoritesNC(repository: CoinsRepository) -> UINavigationController {
-        let favoritesVC = FavoritesVC()
+        let getFavoriteCoinsUseCase: GetFavoriteCoinsUseCase = GetFavoriteCoinsUseCaseImpl(repository: repository)
+        let removeFavoriteCoinUseCase: RemoveFavoriteCoinUseCase = RemoveFavoriteCoinUseCaseImpl(repository: repository)
+        let vm = FavoritesVM(getFavoriteCoinsUseCase: getFavoriteCoinsUseCase, removeFavoriteCoinUseCase: removeFavoriteCoinUseCase)
+        let favoritesVC = FavoritesVC(viewModel: vm)
         favoritesVC.title = "Favorites"
         favoritesVC.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
         
