@@ -25,7 +25,12 @@ struct CoinsRepositoryImpl: CoinsRepository {
                     name: coinDto.name ?? "",
                     iconUrl: coinDto.iconUrl ?? "",
                     price: (coinDto.price ?? "").formatPrice(),
-                    volume: coinDto._24hVolume ?? ""
+                    change: "\(coinDto.change ?? "0") %",
+                    volume: coinDto._24hVolume ?? "",
+                    sparkLine: (coinDto.sparkline ?? []).map { Double($0) ?? 0.0 },
+                    marketCap: coinDto.marketCap ?? "",
+                    bitCoinPrice: coinDto.bitCoinPrice ?? "",
+                    symbol: coinDto.symbol ?? ""
                 )
             }
             return .success(coins)

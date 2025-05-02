@@ -15,7 +15,7 @@ extension String {
         let formatter                   = NumberFormatter()
         formatter.numberStyle           = .currency
         formatter.currencySymbol        = "$ "
-        formatter.maximumFractionDigits = 2
+        formatter.maximumFractionDigits = 8
         formatter.minimumFractionDigits = 2
         
         guard let formatted = formatter.string(from: NSNumber(value: number)) else {
