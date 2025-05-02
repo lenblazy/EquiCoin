@@ -84,8 +84,7 @@ class FavoritesVC: UIViewController {
 extension FavoritesVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let destVC  = CoinDetailsVC()
-        destVC.coin = coins[indexPath.row]
+        let destVC  = CoinDetailsVC(coin: coins[indexPath.row])
         navigationController?.pushViewController(destVC, animated: true)
     }
     
