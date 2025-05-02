@@ -12,28 +12,17 @@ protocol ApiManager {
 }
 
 
-enum ApiEndpoints: EnpointProvider {    
+enum ApiEndpoints: EnpointProvider {
     
     case fetchCoins(page: Int, orderBy: String?)
-    case downloadImage(url: String)
+    case coinDetails(id: String, timePeriod: String?)
     
     var method: HttpMethod {
         switch self {
         case .fetchCoins:
             return .get
-        case .downloadImage:
+        case .coinDetails:
             return .get
-        }
-        
-    }
-    
-    
-    var fullStringUrl: String? {
-        switch self {
-        case .downloadImage(let url):
-            return url
-        default:
-            return nil
         }
     }
     
@@ -47,21 +36,21 @@ enum ApiEndpoints: EnpointProvider {
                 queryList.append(URLQueryItem(name: "orderBy", value: orderBy))
             }
             return queryList
-        default:
-            return nil
+        case .coinDetails(id: _, timePeriod: let timePeriod):
+            return [URLQueryItem(name: "timePeriod", value: timePeriod)]
         }
     }
     
-
+    
     var endpoint: String {
         switch self {
         case .fetchCoins:
             return "/v2/coins"
-        default:
-            return ""
+        case .coinDetails(id: let id, timePeriod: _):
+            return "/v2/coin/\(id)"
         }
     }
-   
+    
 }
 
 enum HttpMethod: String {

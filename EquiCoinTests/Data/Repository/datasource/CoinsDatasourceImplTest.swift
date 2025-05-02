@@ -17,7 +17,7 @@ final class ApiCoinsDatasourceTest: XCTestCase {
     //MARK: - Helpers
 
     private func makeSUT() -> CoinsDatasource {
-        return ApiCoinsDatasource(apiManager: makeAPIManager(), storage: makeStorage())
+        return CoinsDatasourceImpl(apiManager: makeAPIManager(), storage: makeStorage())
     }
     
     private func makeAPIManager() -> ApiManager {

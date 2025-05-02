@@ -17,21 +17,21 @@ class CoinDetailsVC: UIViewController {
     let statSymbol  = StatView()
     let statBtPrice = StatView()
     
-    lazy var chartView: UIView = {
-        let chart = ChartUIView(sparkline: coin.sparkLine)
-        let hostingController = UIHostingController(rootView: chart)
-        addChild(hostingController)
-        hostingController.view.translatesAutoresizingMaskIntoConstraints = false
-        hostingController.didMove(toParent: self)
-        hostingController.view.backgroundColor = .clear
-        
-        return hostingController.view
-    }()
+    private let viewModel: CoinDetailsVM
+    private var period = "24h"
+    private var coin: Coin!
     
-    private let coin: Coin
+    lazy var chartView: UIView = {
+        return updateChartView(with: coin)
+    }()
     
     init(coin: Coin) {
         self.coin = coin
+        let datasource: CoinsDatasource = CoinsDatasourceImpl(apiManager: UrlSessionApiManager(), storage: DefaultsStorageManager())
+        let repository: CoinsRepository = CoinsRepositoryImpl(datasource: datasource)
+        let getCoinDetailsUseCase: GetCoinDetailsUseCase = GetCoinDetailsUseCaseImpl(repository: repository)
+        
+        self.viewModel = CoinDetailsVM(fetchCoinDetails: getCoinDetailsUseCase)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -44,6 +44,8 @@ class CoinDetailsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        setupBindings()
+        viewModel.fetchCoinDetails(coinID: coin.id, period: period)
     }
     
     
@@ -51,7 +53,6 @@ class CoinDetailsVC: UIViewController {
         view.backgroundColor    = AppColors.dark
         title                   = coin.name
         layoutViews()
-        populateViews()
     }
     
     
@@ -103,7 +104,20 @@ class CoinDetailsVC: UIViewController {
     }
     
     
-    private func populateViews() {
+    private func updateChartView(with coin: Coin) -> UIView {
+        let chart = ChartUIView(sparkline: coin.sparkLine)
+        let hostingController = UIHostingController(rootView: chart)
+        addChild(hostingController)
+        hostingController.view.translatesAutoresizingMaskIntoConstraints = false
+        hostingController.didMove(toParent: self)
+        hostingController.view.backgroundColor = .clear
+        
+        return hostingController.view
+    }
+    
+    
+    private func populateViews(with coin: Coin) {
+        chartView               = updateChartView(with: coin)
         let isNegativeRating    = coin.change.contains("-")
         labelPrice.text         = coin.price
         labelChange.text        = isNegativeRating ? coin.change : "+ \(coin.change)"
@@ -112,6 +126,24 @@ class CoinDetailsVC: UIViewController {
         statVolume.populate(title: "Volume 24H", message: coin.volume)
         statBtPrice.populate(title: "Bitcoin Price", message: coin.bitCoinPrice)
         statSymbol.populate(title: "Symbol", message: coin.symbol)
+    }
+    
+    
+    private func setupBindings() {
+        viewModel.onCoinUpdated = { [weak self] coin in
+            guard let strongSelf = self else { return }
+            strongSelf.populateViews(with: coin)
+        }
+        
+        viewModel.onError = { [weak self] errorMessage in
+            guard let strongSelf = self else { return }
+            strongSelf.presentAlert(message: errorMessage)
+        }
+        
+        viewModel.isLoading = { [weak self] isLoading in
+            guard let strongSelf = self else { return }
+            isLoading ? strongSelf.showLoadingView() : strongSelf.dismissLoadingView()
+        }
     }
 
 }

@@ -15,5 +15,6 @@ enum AppError: String, Error {
     case unableToFavorite   = "We were unable to favorite"
     case unknownError       = "Something went wrong"
     case noCoinsFound       = "I am sorry, we could not find any coins."
+    case coinNotFound       = "Coin details not Found. Try searching for another coin."
     case alreadyFavorite    = "Coin already favorited"
 }

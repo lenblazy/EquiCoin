@@ -15,29 +15,29 @@ struct CoinsRepositoryImpl: CoinsRepository {
         self.datasource = datasource
     }
     
+    
     func fetchCoins(page: Int, orderBy: String? = nil) async -> Result<[Coin], AppError> {
         let result = await datasource.coins(page: page, orderBy: orderBy)
         switch result {
         case .success(let coinsDto):
-            let coins = coinsDto.map { coinDto in
-                Coin(
-                    id: coinDto.uuid ?? "0",
-                    name: coinDto.name ?? "",
-                    iconUrl: coinDto.iconUrl ?? "",
-                    price: (coinDto.price ?? "").formatPrice(),
-                    change: "\(coinDto.change ?? "0") %",
-                    volume: coinDto._24hVolume ?? "",
-                    sparkLine: (coinDto.sparkline ?? []).map { Double($0 ?? "0") ?? 0.0 },
-                    marketCap: coinDto.marketCap ?? "",
-                    bitCoinPrice: coinDto.bitCoinPrice ?? "",
-                    symbol: coinDto.symbol ?? ""
-                )
-            }
+            let coins = coinsDto.map { $0.toDomainModel() }
             return .success(coins)
         case .failure(let error):
             return .failure(error)
         }
     }
+    
+    
+    func coinDetails(id: String, period: String) async -> Result<Coin, AppError> {
+        let result = await datasource.coinDetails(id: id, period: period)
+        switch result {
+        case .success(let coinDto):
+            return .success(coinDto.toDomainModel())
+        case .failure(let error):
+            return .failure(error)
+        }
+    }
+    
     
     func fetchFavoriteCoins() async -> Result<[Coin], AppError> {
         return await datasource.fetchFavoriteCoins()

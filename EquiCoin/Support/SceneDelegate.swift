@@ -17,7 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window                                      = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene                         = windowScene
                         
-        let datasource: CoinsDatasource             = ApiCoinsDatasource(apiManager: UrlSessionApiManager(), storage: DefaultsStorageManager())
+        let datasource: CoinsDatasource             = CoinsDatasourceImpl(apiManager: UrlSessionApiManager(), storage: DefaultsStorageManager())
         let repository: CoinsRepository             = CoinsRepositoryImpl(datasource: datasource)
         
         window?.rootViewController                  = ECTabBarController(repository: repository)
