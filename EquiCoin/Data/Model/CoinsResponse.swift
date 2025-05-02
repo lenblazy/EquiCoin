@@ -6,25 +6,25 @@
 //
 
 struct CoinsResponse: Codable {
-    let status: String?
-    let data: CoinsData?
+    var status: String? = nil
+    var data: CoinsData? = nil
 }
 
 struct CoinsData: Codable {
-    let coins: [CoinDto]?
+    var coins: [CoinDto]? = nil
 }
 
 struct CoinDto: Codable {
-    let uuid: String?
-    let name: String?
-    let iconUrl: String?
-    let price: String?
-    let change: String?
-    let sparkline: [String]?
-    let _24hVolume : String?
-    let marketCap : String?
-    let symbol : String?
-    let bitCoinPrice : String?
+    var uuid: String? = nil
+    var name: String? = nil
+    var iconUrl: String? = nil
+    var price: String? = nil
+    var change: String? = nil
+    var sparkline: [String?]? = nil
+    var _24hVolume : String? = nil
+    var marketCap : String? = nil
+    var symbol : String? = nil
+    var bitCoinPrice : String? = nil
     
     enum CodingKeys: String, CodingKey {
         case uuid, name, iconUrl, price, change, sparkline, marketCap, symbol

@@ -14,7 +14,9 @@ class CoinsVC: UIViewController {
     var isLoadingMoreCoins = false
     var coins: [Coin] = []
     
-    let tableView = UITableView()
+    let tableView       = UITableView()
+    let buttonPrice     = SelectableButton(title: "Highest Price")
+    let buttonVolume    = SelectableButton(title: "Best 24H Performance")
     
     private let pagCount = 20
     private let viewModel: CoinsVM
@@ -29,6 +31,7 @@ class CoinsVC: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
@@ -42,17 +45,64 @@ class CoinsVC: UIViewController {
         title = "Coins"
         navigationController?.navigationBar.prefersLargeTitles = true
         configureTableView()
+        [buttonPrice, buttonVolume].forEach {
+            view.addSubview($0)
+            $0.addTarget(self, action: #selector(filterResults), for: .touchUpInside)
+        }
+        
+        
+        let padding: CGFloat = 16
+        
+        NSLayoutConstraint.activate([
+            buttonPrice.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: padding),
+            buttonPrice.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+            buttonPrice.trailingAnchor.constraint(equalTo: buttonVolume.leadingAnchor, constant: -padding),
+            buttonPrice.heightAnchor.constraint(equalToConstant: 50),
+            
+            buttonVolume.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: padding),
+            buttonVolume.leadingAnchor.constraint(equalTo: buttonPrice.trailingAnchor, constant: padding),
+            buttonVolume.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            buttonVolume.heightAnchor.constraint(equalToConstant: 50),
+            
+            tableView.topAnchor.constraint(equalTo: buttonPrice.bottomAnchor, constant: padding),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            
+        ])
+        
+    }
+    
+    
+    @objc func filterResults(_ sender: SelectableButton) {
+        [buttonPrice, buttonVolume].forEach { $0.isSelected = ($0 == sender) ? !$0.isSelected : false }
+        page = 0
+        
+        let sort: String?
+        
+        if buttonPrice.isSelected {
+            sort = "price"
+        }
+        else if buttonVolume.isSelected {
+            sort = "24hVolume"
+        }
+        else {
+            sort = nil
+        }
+        
+        viewModel.fetchCoins(page: page, orderBy: sort)
+        coins = []
     }
     
     
     func configureTableView() {
         view.addSubview(tableView)
-        tableView.frame             = view.bounds
         tableView.rowHeight         = 80
         tableView.dataSource        = self
         tableView.delegate          = self
         tableView.separatorColor    = AppColors.grayLight
         tableView.backgroundColor   = AppColors.dark
+        tableView.translatesAutoresizingMaskIntoConstraints = false
         
         tableView.register(CoinCell.self, forCellReuseIdentifier: CoinCell.reuseID)
     }
@@ -138,10 +188,10 @@ extension CoinsVC: UITableViewDataSource {
             viewModel.favorite(coin: coin)
             completionHandler(true)
         }
-
+        
         favoriteAction.backgroundColor  = AppColors.brandDark
         favoriteAction.image            = AppImages.favorite
-
+        
         let configuration               = UISwipeActionsConfiguration(actions: [favoriteAction])
         configuration.performsFirstActionWithFullSwipe = false
         return configuration

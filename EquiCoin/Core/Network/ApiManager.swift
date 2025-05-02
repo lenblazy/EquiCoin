@@ -14,7 +14,7 @@ protocol ApiManager {
 
 enum ApiEndpoints: EnpointProvider {    
     
-    case fetchCoins(page: Int)
+    case fetchCoins(page: Int, orderBy: String?)
     case downloadImage(url: String)
     
     var method: HttpMethod {
@@ -41,8 +41,12 @@ enum ApiEndpoints: EnpointProvider {
     var queryItems: [URLQueryItem]? {
         let offSet = 20
         switch self {
-        case .fetchCoins(let page):
-            return [URLQueryItem(name: "offset", value: "\(page * offSet)"),URLQueryItem(name: "limit", value: "\(offSet)")]
+        case .fetchCoins(let page, let orderBy):
+            var queryList = [URLQueryItem(name: "offset", value: "\(page * offSet)"),URLQueryItem(name: "limit", value: "\(offSet)")]
+            if orderBy != nil {
+                queryList.append(URLQueryItem(name: "orderBy", value: orderBy))
+            }
+            return queryList
         default:
             return nil
         }

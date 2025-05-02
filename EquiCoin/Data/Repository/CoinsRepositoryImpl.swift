@@ -15,8 +15,8 @@ struct CoinsRepositoryImpl: CoinsRepository {
         self.datasource = datasource
     }
     
-    func fetchCoins(page: Int) async -> Result<[Coin], AppError> {
-        let result = await datasource.coins(page: page)
+    func fetchCoins(page: Int, orderBy: String? = nil) async -> Result<[Coin], AppError> {
+        let result = await datasource.coins(page: page, orderBy: orderBy)
         switch result {
         case .success(let coinsDto):
             let coins = coinsDto.map { coinDto in
@@ -27,7 +27,7 @@ struct CoinsRepositoryImpl: CoinsRepository {
                     price: (coinDto.price ?? "").formatPrice(),
                     change: "\(coinDto.change ?? "0") %",
                     volume: coinDto._24hVolume ?? "",
-                    sparkLine: (coinDto.sparkline ?? []).map { Double($0) ?? 0.0 },
+                    sparkLine: (coinDto.sparkline ?? []).map { Double($0 ?? "0") ?? 0.0 },
                     marketCap: coinDto.marketCap ?? "",
                     bitCoinPrice: coinDto.bitCoinPrice ?? "",
                     symbol: coinDto.symbol ?? ""

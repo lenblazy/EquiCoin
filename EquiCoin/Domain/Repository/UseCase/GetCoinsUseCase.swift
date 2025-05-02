@@ -8,7 +8,7 @@
 import Foundation
 
 protocol GetCoinsUseCase {
-    func execute(page: Int) async -> Result<[Coin], AppError>
+    func execute(page: Int, orderBy: String?) async -> Result<[Coin], AppError>
 }
 
 class GetCoinsUseCaseImpl: GetCoinsUseCase {
@@ -19,8 +19,8 @@ class GetCoinsUseCaseImpl: GetCoinsUseCase {
         self.repository = repository
     }
     
-    func execute(page: Int) async -> Result<[Coin], AppError> {
-        return await repository.fetchCoins(page: page)
+    func execute(page: Int, orderBy: String? = nil) async -> Result<[Coin], AppError> {
+        return await repository.fetchCoins(page: page, orderBy: orderBy)
     }
     
 }
