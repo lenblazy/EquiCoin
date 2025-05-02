@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		B88D1F912DC4FAB500CF85A9 /* SVGKit in Frameworks */ = {isa = PBXBuildFile; productRef = B88D1F902DC4FAB500CF85A9 /* SVGKit */; };
+		B88D1F932DC4FAD200CF85A9 /* SVGKitSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B88D1F922DC4FAD200CF85A9 /* SVGKitSwift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		B83573552DBE5F0E006DB0D4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -72,6 +77,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B88D1F932DC4FAD200CF85A9 /* SVGKitSwift in Frameworks */,
+				B88D1F912DC4FAB500CF85A9 /* SVGKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,6 +155,8 @@
 			);
 			name = EquiCoin;
 			packageProductDependencies = (
+				B88D1F902DC4FAB500CF85A9 /* SVGKit */,
+				B88D1F922DC4FAD200CF85A9 /* SVGKitSwift */,
 			);
 			productName = EquiCoin;
 			productReference = B8751E7F2DBDE47000BAB2CA /* EquiCoin.app */;
@@ -165,6 +174,7 @@
 				TargetAttributes = {
 					B83573502DBE5F0E006DB0D4 = {
 						CreatedOnToolsVersion = 16.3;
+						LastSwiftMigration = 1630;
 						TestTargetID = B8751E7E2DBDE47000BAB2CA;
 					};
 					B8751E7E2DBDE47000BAB2CA = {
@@ -180,6 +190,9 @@
 				Base,
 			);
 			mainGroup = B8751E762DBDE47000BAB2CA;
+			packageReferences = (
+				B80799A32DC4F96C009D411A /* XCRemoteSwiftPackageReference "SVGKit" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = B8751E802DBDE47000BAB2CA /* Products */;
 			projectDirPath = "";
@@ -238,6 +251,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7SX6NBSFY3;
@@ -246,6 +260,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = io.lenibonje.EquiCoinTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "EquiCoinTests/Data/Repository/EquiCoinTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EquiCoin.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/EquiCoin";
@@ -256,6 +272,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7SX6NBSFY3;
@@ -264,6 +281,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = io.lenibonje.EquiCoinTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "EquiCoinTests/Data/Repository/EquiCoinTests-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EquiCoin.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/EquiCoin";
@@ -484,6 +502,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B80799A32DC4F96C009D411A /* XCRemoteSwiftPackageReference "SVGKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SVGKit/SVGKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B88D1F902DC4FAB500CF85A9 /* SVGKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B80799A32DC4F96C009D411A /* XCRemoteSwiftPackageReference "SVGKit" */;
+			productName = SVGKit;
+		};
+		B88D1F922DC4FAD200CF85A9 /* SVGKitSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B80799A32DC4F96C009D411A /* XCRemoteSwiftPackageReference "SVGKit" */;
+			productName = SVGKitSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B8751E772DBDE47000BAB2CA /* Project object */;
 }

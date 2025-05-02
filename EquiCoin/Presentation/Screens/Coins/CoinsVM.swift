@@ -21,8 +21,9 @@ class CoinsVM {
         self.addFavoriteCoinUseCase = addFavoriteCoinUseCase
     }
     
+    
     func fetchCoins(page: Int, orderBy: String? = nil) {
-        Task {
+        Task { 
             self.isLoading?(true)
             let result = await fetchCoinsUseCase.execute(page: page, orderBy: orderBy)
             self.isLoading?(false)
