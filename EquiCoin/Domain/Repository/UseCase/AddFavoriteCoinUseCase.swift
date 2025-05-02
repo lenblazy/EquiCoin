@@ -8,7 +8,7 @@
 import Foundation
 
 protocol AddFavoriteCoinUseCase {
-    func execute(id: String) async throws -> Void
+    func execute(coin: Coin) async throws -> Void
 }
 
 class AddFavoriteCoinUseCaseImpl: AddFavoriteCoinUseCase {
@@ -19,8 +19,8 @@ class AddFavoriteCoinUseCaseImpl: AddFavoriteCoinUseCase {
         self.repository = repository
     }
     
-    func execute(id: String) async throws -> Void {
-        return try await repository.favoriteCoin(id: id)
+    func execute(coin: Coin) async throws -> Void {
+        return try await repository.favoriteCoin(coin: coin)
     }
     
 }

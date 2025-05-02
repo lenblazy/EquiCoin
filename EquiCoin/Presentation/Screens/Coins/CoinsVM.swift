@@ -36,10 +36,10 @@ class CoinsVM {
         
     }
     
-    func favoriteCoin(id: String) {
+    func favoriteCoin(coin: Coin) {
         Task {
             do {
-                try await addFavoriteCoinUseCase.execute(id: id)
+                try await addFavoriteCoinUseCase.execute(coin: coin)
             } catch let error as AppError {
                 self.onError?(error.rawValue)
             } catch {

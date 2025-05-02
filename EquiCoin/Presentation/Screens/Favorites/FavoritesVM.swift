@@ -35,10 +35,10 @@ class FavoritesVM {
         }
     }
     
-    func unFavoriteCoin(id: String) {
+    func unFavoriteCoin(coin: Coin) {
         Task {
             do {
-                try await removeFavoriteCoinUseCase.execute(id: id)
+                try await removeFavoriteCoinUseCase.execute(coin: coin)
                 fetchFavoriteCoins()
             } catch let error as AppError {
                 self.onError?(error.rawValue)

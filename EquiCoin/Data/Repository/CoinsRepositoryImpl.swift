@@ -29,15 +29,15 @@ struct CoinsRepositoryImpl: CoinsRepository {
     }
     
     func fetchFavoriteCoins() async -> Result<[Coin], AppError> {
-        return await datasource.fetchFavoriteCoins(key: StorageKeys.favorites)
+        return await datasource.fetchFavoriteCoins()
     }
     
-    func favoriteCoin(id: String) async throws {
-        debugPrint("Coin in repo")
+    func favoriteCoin(coin: Coin) async throws {
+        try await datasource.favoriteCoin(coin: coin)
     }
     
-    func unFavoriteCoin(id: String) async throws {
-        debugPrint("Coin out from repo")
+    func unFavoriteCoin(coin: Coin) async throws {
+        try await datasource.unFavoriteCoin(coin: coin)
     }
     
 }
