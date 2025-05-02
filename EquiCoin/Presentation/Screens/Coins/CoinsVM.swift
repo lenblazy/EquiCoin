@@ -36,7 +36,7 @@ class CoinsVM {
         
     }
     
-    func favoriteCoin(coin: Coin) {
+    func favorite(coin: Coin) {
         Task {
             do {
                 try await addFavoriteCoinUseCase.execute(coin: coin)

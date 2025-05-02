@@ -38,6 +38,7 @@ struct DefaultsStorageManager: StorageManager {
             
             try await save(favorites: favorites)
         } catch {
+            debugPrint(error)
             throw error
         }
         
@@ -45,7 +46,7 @@ struct DefaultsStorageManager: StorageManager {
     
     func retrieveFavorites() async throws -> [Coin] {
         guard let favoritesData = defaults.object(forKey: Keys.favorites) as? Data else {
-            throw AppError.noCoinsFound
+            return []
         }
         
         do {
@@ -53,6 +54,7 @@ struct DefaultsStorageManager: StorageManager {
             let coins = try decoder.decode([Coin].self, from: favoritesData)
             return coins
         } catch {
+            debugPrint(error)
             throw AppError.unableToFavorite
         }
     }

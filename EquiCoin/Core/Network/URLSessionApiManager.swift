@@ -17,8 +17,8 @@ struct UrlSessionApiManager: ApiManager {
                 throw AppError.invalidResponse
             }
             
-            let jsonStr = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
-            debugPrint(jsonStr)
+//            let jsonStr = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
+//            debugPrint(jsonStr)
 
             let decoder = JSONDecoder()
             return try decoder.decode(T.self, from: data)

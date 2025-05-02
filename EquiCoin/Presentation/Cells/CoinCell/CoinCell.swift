@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CoinCell: UICollectionViewCell {
+class CoinCell: UITableViewCell {
     
     static let reuseID = "FollowerCell"
     
@@ -19,8 +19,9 @@ class CoinCell: UICollectionViewCell {
     var stackMain       = UIStackView()
     var stackPerform    = UIStackView()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         configure()
     }
     
@@ -31,7 +32,7 @@ class CoinCell: UICollectionViewCell {
     
     
     private func configure() {
-        contentView.backgroundColor = AppColors.brand.withAlphaComponent(0.1)
+        contentView.backgroundColor = AppColors.dark
         contentView.addSubview(stackMain)
         contentView.addSubview(stackPerform)
         contentView.addSubview(coinImageView)

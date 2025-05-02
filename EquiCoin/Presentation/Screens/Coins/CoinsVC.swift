@@ -9,17 +9,12 @@ import UIKit
 
 class CoinsVC: UIViewController {
     
-    enum Section {
-        case main
-    }
-    
     var page = 0
     var hasMoreCoins = true
     var isLoadingMoreCoins = false
     var coins: [Coin] = []
     
-    var collectionView: UICollectionView!
-    var datasource: UICollectionViewDiffableDataSource<Section, Coin>!
+    let tableView = UITableView()
     
     private let pagCount = 20
     private let viewModel: CoinsVM
@@ -28,6 +23,7 @@ class CoinsVC: UIViewController {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
+    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -45,34 +41,20 @@ class CoinsVC: UIViewController {
         view.backgroundColor = AppColors.dark
         title = "Coins"
         navigationController?.navigationBar.prefersLargeTitles = true
-        configureCollectionView()
+        configureTableView()
     }
     
     
-    private func configureCollectionView(){
-        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: UIHelper.createFlowLayout(in: view, height: CGFloat(70)))
-        view.addSubview(collectionView)
-        collectionView.delegate = self
-        collectionView.backgroundColor = .clear
-        collectionView.register(CoinCell.self, forCellWithReuseIdentifier: CoinCell.reuseID)
-        configureDataSource()
-    }
-    
-    
-    private func configureDataSource() {
-        datasource = UICollectionViewDiffableDataSource<Section, Coin>(collectionView: collectionView, cellProvider: { collectionView, indexPath, coin in
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CoinCell.reuseID, for: indexPath) as! CoinCell
-            cell.set(coin: coin)
-            return cell
-        })
-    }
-    
-    
-    private func updateData(on coins: [Coin]){
-        var snapshot = NSDiffableDataSourceSnapshot<Section, Coin>()
-        snapshot.appendSections([.main])
-        snapshot.appendItems(coins)
-        datasource.apply(snapshot, animatingDifferences: true)
+    func configureTableView() {
+        view.addSubview(tableView)
+        tableView.frame             = view.bounds
+        tableView.rowHeight         = 80
+        tableView.dataSource        = self
+        tableView.delegate          = self
+        tableView.separatorColor    = AppColors.grayLight
+        tableView.backgroundColor   = AppColors.dark
+        
+        tableView.register(CoinCell.self, forCellReuseIdentifier: CoinCell.reuseID)
     }
     
     
@@ -84,7 +66,7 @@ class CoinsVC: UIViewController {
             return
         }
         
-        updateData(on: self.coins)
+        tableView.reloadData()
     }
     
     
@@ -108,7 +90,7 @@ class CoinsVC: UIViewController {
 }
 
 
-extension CoinsVC: UICollectionViewDelegate {
+extension CoinsVC: UITableViewDelegate {
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         let offsetY         = scrollView.contentOffset.y
@@ -127,10 +109,43 @@ extension CoinsVC: UICollectionViewDelegate {
         
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let destVC = CoinDetailsVC()
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let destVC  = CoinDetailsVC()
         destVC.coin = coins[indexPath.row]
         navigationController?.pushViewController(destVC, animated: true)
+    }
+    
+}
+
+extension CoinsVC: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return coins.count
+    }
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: CoinCell.reuseID) as! CoinCell
+        let coin = coins[indexPath.row]
+        cell.set(coin: coin)
+        return cell
+    }
+    
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let favoriteAction = UIContextualAction(style: .normal, title: "Favorite") { [weak self] (action, view, completionHandler) in
+            guard let self = self else { return }
+            let coin = self.coins[indexPath.row]
+            viewModel.favorite(coin: coin)
+            completionHandler(true)
+        }
+
+        favoriteAction.backgroundColor  = AppColors.brandDark
+        favoriteAction.image            = AppImages.favorite
+
+        let configuration               = UISwipeActionsConfiguration(actions: [favoriteAction])
+        configuration.performsFirstActionWithFullSwipe = false
+        return configuration
     }
     
 }
