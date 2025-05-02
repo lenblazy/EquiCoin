@@ -19,9 +19,9 @@ class CoinsVC: UIViewController {
     let buttonVolume    = SelectableButton(title: "Best 24H Performance")
     
     private let pagCount = 20
-    private let viewModel: CoinsVM
+    private let viewModel: CoinsVMProtocol
     
-    init(viewModel: CoinsVM) {
+    init(viewModel: CoinsVMProtocol) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -36,7 +36,7 @@ class CoinsVC: UIViewController {
         super.viewDidLoad()
         configureUI()
         setupBindings()
-        viewModel.fetchCoins(page: page)
+        viewModel.fetchCoins(page: page, orderBy: nil)
     }
     
     
@@ -154,7 +154,7 @@ extension CoinsVC: UITableViewDelegate {
                 return
             }
             page += 1
-            viewModel.fetchCoins(page: page)
+            viewModel.fetchCoins(page: page, orderBy: nil)
         }
         
     }

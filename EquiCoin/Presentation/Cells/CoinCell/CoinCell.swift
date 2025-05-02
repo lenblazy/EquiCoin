@@ -16,6 +16,7 @@ class CoinCell: UITableViewCell {
     let minCapLabel     = AppBodyLabel()
     let maxCapLabel     = AppTitleLabel(textAlignment: .left, fontSize: 14, color: AppColors.grayDark)
     let coinImageView   = AppCacheImageView()
+    let svgCoinIV       = SvgCacheImageView()
     var stackMain       = UIStackView()
     var stackPerform    = UIStackView()
     
@@ -36,13 +37,13 @@ class CoinCell: UITableViewCell {
         contentView.addSubview(stackMain)
         contentView.addSubview(stackPerform)
         contentView.addSubview(coinImageView)
+        contentView.addSubview(svgCoinIV)
         
         stackMain.axis      = .vertical
         stackMain.spacing   = 4
         stackMain.addArrangedSubview(coinLabel)
         stackMain.addArrangedSubview(priceLabel)
         stackMain.translatesAutoresizingMaskIntoConstraints = false
-        
         
         stackPerform.axis      = .vertical
         stackPerform.spacing   = 4
@@ -60,6 +61,11 @@ class CoinCell: UITableViewCell {
             coinImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: paddingH),
             coinImageView.widthAnchor.constraint(equalTo: coinImageView.heightAnchor),
             
+            svgCoinIV.topAnchor.constraint(equalTo: topAnchor, constant: paddingV),
+            svgCoinIV.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -paddingV),
+            svgCoinIV.leadingAnchor.constraint(equalTo: leadingAnchor, constant: paddingH),
+            svgCoinIV.widthAnchor.constraint(equalTo: svgCoinIV.heightAnchor),
+            
             stackMain.centerYAnchor.constraint(equalTo: centerYAnchor),
             stackMain.leadingAnchor.constraint(equalTo: coinImageView.trailingAnchor, constant: paddingH),
             stackMain.trailingAnchor.constraint(equalTo: stackPerform.leadingAnchor, constant: -paddingH),
@@ -72,11 +78,16 @@ class CoinCell: UITableViewCell {
     
     
     func set(coin: Coin) {
-        coinImageView.loadImage(from: coin.iconUrl)
         coinLabel.text      = coin.name
         priceLabel.text     = coin.price
         minCapLabel.text    = coin.volume
         maxCapLabel.text    = "24H Volume:"
+        
+//        if coin.iconUrl.contains(".svg") {
+//            svgCoinIV.loadImage(from: coin.iconUrl)
+//            return
+//        }
+        coinImageView.loadImage(from: coin.iconUrl)
     }
     
 }

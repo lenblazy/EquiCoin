@@ -7,6 +7,8 @@
 
 import Foundation
 
+let API_KEY = "coinranking2af8df56dd87dbda1d940c16c4033c0296b050867b4905e8"
+
 protocol EnpointProvider {
     var scheme: String { get }
     var endpoint: String { get }
@@ -38,7 +40,7 @@ extension EnpointProvider {
         urlRequest.httpMethod = method.rawValue
         urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
         urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        urlRequest.addValue("x-access-token", forHTTPHeaderField: "coinranking2af8df56dd87dbda1d940c16c4033c0296b050867b4905e8")
+        urlRequest.addValue("x-access-token", forHTTPHeaderField: API_KEY)
         
         debugPrint(urlRequest.url?.absoluteString ?? "Nothing")
         

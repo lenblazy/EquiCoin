@@ -23,3 +23,4 @@ enum AppImages {
     static let home         = UIImage(systemName: "house")!
     static let favorite     = UIImage(systemName: "star")!
 }
+

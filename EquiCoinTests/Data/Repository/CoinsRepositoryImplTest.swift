@@ -2,34 +2,134 @@
 //  CoinsRepositoryImplTest.swift
 //  EquiCoinTests
 //
-//  Created by Lennox Mwabonje on 01/05/2025.
+//  Created by Lennox Mwabonje on 02/05/2025.
 //
 
 import XCTest
+@testable import EquiCoin
 
-final class CoinsRepositoryImplTest: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+final class CoinsRepositoryImplTests: XCTestCase {
+    
+    var mockDatasource: MockCoinsDatasource!
+    var repository: CoinsRepositoryImpl!
+    
+    override func setUp() {
+        super.setUp()
+        mockDatasource = MockCoinsDatasource()
+        repository = CoinsRepositoryImpl(datasource: mockDatasource)
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    
+    func testFetchCoins_success() async {
+        mockDatasource.coinsResult = .success([TestHelpers.makeCoinDto()])
+        
+        let result = await repository.fetchCoins(page: 1)
+        
+        switch result {
+        case .success(let coins):
+            XCTAssertEqual(coins.count, 1)
+        case .failure:
+            XCTFail("Expected success")
         }
     }
+    
+    func testFetchCoins_failure() async {
+        mockDatasource.coinsResult = .failure(AppError.invalidData)
+        
+        let result = await repository.fetchCoins(page: 1)
+        
+        switch result {
+        case .success:
+            XCTFail("Expected failure")
+        case .failure(let error):
+            XCTAssertEqual(error, AppError.invalidData)
+        }
+    }
+    
+    func testCoinDetails_success() async {
+        mockDatasource.coinDetailsResult = .success(TestHelpers.makeCoinDto(name: "Ethereum"))
+        
+        let result = await repository.coinDetails(id: "", period: "")
+        
+        switch result {
+        case .success(let coin):
+            XCTAssertEqual(coin.name, "Ethereum")
+        case .failure:
+            XCTFail("Expected success")
+        }
+    }
+    
+    func testCoinDetails_failure() async {
+        mockDatasource.coinDetailsResult = .failure(.coinNotFound)
+        
+        let result = await repository.coinDetails(id: "", period: "")
+        
+        switch result {
+        case .success:
+            XCTFail("Expected failure")
+        case .failure(let error):
+            XCTAssertEqual(error, .coinNotFound)
+        }
+    }
+    
+    func testFetchFavoriteCoins_success() async {
+        mockDatasource.favoriteCoinsResult = .success([TestHelpers.makeCoinDto(id: "btc").toDomainModel()])
+        
+        let result = await repository.fetchFavoriteCoins()
+        
+        switch result {
+        case .success(let coins):
+            XCTAssertEqual(coins.count, 1)
+            XCTAssertEqual(coins.first?.id, "btc")
+        case .failure:
+            XCTFail("Expected success")
+        }
+    }
+    
+    func testFavoriteCoin_callsDatasource() async throws {
+        try await repository.favoriteCoin(coin: TestHelpers.makeCoinDto(id: "btc").toDomainModel())
+        XCTAssertEqual(mockDatasource.lastFavoriteCoin?.id, "btc")
+        XCTAssertEqual(mockDatasource.lastFavoriteAction, .add)
+    }
+    
+    func testUnFavoriteCoin_callsDatasource() async throws {
+        try await repository.unFavoriteCoin(coin: TestHelpers.makeCoinDto(id: "eth").toDomainModel())
+        
+        XCTAssertEqual(mockDatasource.lastFavoriteCoin?.id, "eth")
+        XCTAssertEqual(mockDatasource.lastFavoriteAction, .remove)
+    }
 
+    
+}
+
+
+final class MockCoinsDatasource: CoinsDatasource {
+    
+    var coinsResult: Result<[CoinDto], AppError> = .success([])
+    var coinDetailsResult: Result<CoinDto, AppError> = .success(CoinDto())
+    var favoriteCoinsResult: Result<[Coin], AppError> = .success([])
+    
+    var lastFavoriteCoin: Coin?
+    var lastFavoriteAction: StorageActionType?
+    
+    func coins(page: Int, orderBy: String?) async -> Result<[CoinDto], AppError> {
+        return coinsResult
+    }
+    
+    func coinDetails(id: String, period: String) async -> Result<CoinDto, AppError> {
+        return coinDetailsResult
+    }
+    
+    func fetchFavoriteCoins() async -> Result<[Coin], AppError> {
+        return favoriteCoinsResult
+    }
+    
+    func favoriteCoin(coin: Coin) async throws {
+        lastFavoriteCoin = coin
+        lastFavoriteAction = .add
+    }
+    
+    func unFavoriteCoin(coin: Coin) async throws {
+        lastFavoriteCoin = coin
+        lastFavoriteAction = .remove
+    }
 }

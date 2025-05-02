@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import SVGKit
 
-class AppCacheImageView: UIImageView {
+class SvgCacheImageView: SVGKFastImageView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -23,7 +24,7 @@ class AppCacheImageView: UIImageView {
     convenience init() {
         self.init(frame: .zero)
     }
-   
+    
     
     override func layoutSubviews() {
         self.layer.cornerRadius = self.bounds.width / 2
@@ -34,19 +35,18 @@ class AppCacheImageView: UIImageView {
     
     func loadImage(from endPoint: String) {
         Task {
-            let image = await UIImage.cacheImage(from: endPoint)
+            let image = await SVGKImage.cacheImage(from: endPoint)
             self.image = image
         }
     }
     
     
     private func configure() {
-        self.clipsToBounds          = true
-        self.image                  = AppImages.placeHolder
-        
-        self.translatesAutoresizingMaskIntoConstraints = false
+        clipsToBounds       = true
+//        image               = SVGKImage(named: "PlaceHolder")
         contentMode         = .scaleAspectFill
         layer.masksToBounds = true
+        translatesAutoresizingMaskIntoConstraints = false
     }
 }
 

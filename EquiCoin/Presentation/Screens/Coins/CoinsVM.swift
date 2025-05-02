@@ -7,8 +7,17 @@
 
 import Foundation
 
+protocol CoinsVMProtocol: AnyObject {
+    var onCoinsUpdated: (([Coin]) -> Void)? { get set }
+    var onError: ((String) -> Void)? { get set }
+    var isLoading: ((Bool) -> Void)? { get set }
+
+    func fetchCoins(page: Int, orderBy: String?)
+    func favorite(coin: Coin)
+}
+
 @MainActor
-class CoinsVM {
+class CoinsVM: @preconcurrency CoinsVMProtocol {
     var onCoinsUpdated: (([Coin]) -> Void)?
     var onError: ((String) -> Void)?
     var isLoading: ((Bool) -> Void)?
@@ -21,8 +30,9 @@ class CoinsVM {
         self.addFavoriteCoinUseCase = addFavoriteCoinUseCase
     }
     
+    
     func fetchCoins(page: Int, orderBy: String? = nil) {
-        Task {
+        Task { 
             self.isLoading?(true)
             let result = await fetchCoinsUseCase.execute(page: page, orderBy: orderBy)
             self.isLoading?(false)
