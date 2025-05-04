@@ -77,16 +77,27 @@ class CoinCell: UITableViewCell {
     }
     
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        svgCoinIV.image     = nil
+        coinImageView.image = nil
+    }
+    
+    
     func set(coin: Coin) {
-        coinLabel.text      = coin.name
-        priceLabel.text     = coin.price
-        minCapLabel.text    = coin.volume
-        maxCapLabel.text    = "24H Volume:"
+        coinLabel.text          = coin.name
+        priceLabel.text         = coin.price
+        minCapLabel.text        = coin.volume
+        maxCapLabel.text        = "24H Volume:"
+        coinImageView.isHidden  = false
+        svgCoinIV.isHidden      = false
         
-//        if coin.iconUrl.contains(".svg") {
-//            svgCoinIV.loadImage(from: coin.iconUrl)
-//            return
-//        }
+        if coin.iconUrl.contains(".svg") {
+            coinImageView.isHidden = true
+            svgCoinIV.loadImage(from: coin.iconUrl)
+            return
+        }
+        svgCoinIV.isHidden = true
         coinImageView.loadImage(from: coin.iconUrl)
     }
     
