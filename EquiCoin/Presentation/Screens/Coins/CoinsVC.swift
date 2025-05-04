@@ -40,6 +40,13 @@ class CoinsVC: UIViewController {
     }
     
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        debugPrint("View will disappear")
+        dismissLoadingView()
+    }
+    
+    
     private func configureUI() {
         view.backgroundColor = AppColors.dark
         title = "Coins"
