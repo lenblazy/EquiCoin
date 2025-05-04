@@ -35,7 +35,10 @@ class SvgCacheImageView: SVGKFastImageView {
     
     func loadImage(from endPoint: String) {
         Task {
-            let image = await SVGKImage.cacheImage(from: endPoint)
+            guard let image = await SVGKImage.cacheImage(from: endPoint) else {
+                return
+            }
+            
             self.image = image
         }
     }
@@ -43,7 +46,6 @@ class SvgCacheImageView: SVGKFastImageView {
     
     private func configure() {
         clipsToBounds       = true
-//        image               = SVGKImage(named: "PlaceHolder")
         contentMode         = .scaleAspectFill
         layer.masksToBounds = true
         translatesAutoresizingMaskIntoConstraints = false

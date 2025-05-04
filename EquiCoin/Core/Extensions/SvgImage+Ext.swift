@@ -26,10 +26,15 @@ extension SVGKImage {
                 return nil
             }
             
-            guard let image = SVGKImage(data: data) else { return nil }
-//            if !image.hasSize() {
-//                image.size = CGSize(width: 200, height: 200)
-//            }
+            guard let image = SVGKImage(data: data),
+                  image.hasSize(),
+                  image.size != .zero,
+                  !image.size.width.isNaN,
+                  !image.size.height.isNaN else {
+                print("⚠️ Invalid SVG image from \(endPoint)")
+                return nil
+            }
+            
             self.cache.setObject(image, forKey: cacheKey)
             
             return image

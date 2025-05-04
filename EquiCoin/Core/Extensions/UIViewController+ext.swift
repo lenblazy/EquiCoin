@@ -42,7 +42,7 @@ extension UIViewController{
     }
     
     func dismissLoadingView() {
-        containerView.removeFromSuperview()
+        containerView?.removeFromSuperview()
         containerView = nil
     }
     
